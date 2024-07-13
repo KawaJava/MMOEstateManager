@@ -5,6 +5,8 @@ import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.service.AdminPlayerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -21,8 +23,8 @@ public class AdminPlayerController {
     private final AdminPlayerService adminPlayerService;
 
     @GetMapping
-    public List<AdminPlayer> getAdminPlayers() {
-        return adminPlayerService.getAdminPlayers();
+    public Page<AdminPlayer> getAdminPlayers(Pageable pageable) {
+        return adminPlayerService.getAdminPlayers(pageable);
     }
 
     @GetMapping("/inactive")

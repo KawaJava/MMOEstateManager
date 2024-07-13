@@ -3,6 +3,8 @@ package io.github.kawajava.MMOEstateManager.admin.player.service;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.repository.AdminPlayerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +15,8 @@ public class AdminPlayerService {
 
     private final AdminPlayerRepository adminPlayerRepository;
 
-    public List<AdminPlayer> getAdminPlayers() {
-        return adminPlayerRepository.findAll();
+    public Page<AdminPlayer> getAdminPlayers(Pageable pageable) {
+        return adminPlayerRepository.findAll(pageable);
     }
 
     public List<AdminPlayer> getInActiveAdminPlayers() {
