@@ -46,7 +46,7 @@ public class AdminPlayerController {
         return adminPlayerService.updateAdminPlayer(mapAdminPlayer(adminPlayerDto, id));
     }
 
-    @PatchMapping("/{id}/deactivate")
+    @DeleteMapping("/{id}/deactivate")
     public void deactivateAdminPlayer(@PathVariable Long id){
         adminPlayerService.deactivateAdminPlayer(id);
     }
