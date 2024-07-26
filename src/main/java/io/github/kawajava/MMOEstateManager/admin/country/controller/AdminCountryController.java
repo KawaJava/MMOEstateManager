@@ -4,16 +4,14 @@ import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCou
 import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryGeneralInfoDto;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.service.AdminCountryService;
-import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerDto;
-import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static io.github.kawajava.MMOEstateManager.admin.utils.SlugifyUtils.slugifySlug;
@@ -23,6 +21,8 @@ import static io.github.kawajava.MMOEstateManager.admin.utils.SlugifyUtils.slugi
 @RequestMapping("/admin/countries")
 public class AdminCountryController {
 
+    @Value("${gold.limit.default}")
+    private double defaultGoldLimit;
     private final AdminCountryService adminCountryService;
 
     @GetMapping
@@ -66,7 +66,7 @@ public class AdminCountryController {
                 .name(adminCountryDto.getName())
                 .slug(slugifySlug(adminCountryDto.getSlug()))
                 .actualSheriffId(adminCountryDto.getActualSheriffId())
-                .goldLimit(adminCountryDto.getGoldLimit() == null ? BigDecimal.valueOf(50000) :
+                .goldLimit(adminCountryDto.getGoldLimit() == null ? BigDecimal.valueOf(defaultGoldLimit) :
                         adminCountryDto.getGoldLimit())
                 .sheriffStartDate(LocalDateTime.now())
                 .build();
