@@ -2,17 +2,22 @@ package io.github.kawajava.MMOEstateManager.admin.country.service;
 
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
-import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.AdminHistoricalSheriffsService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class AdminCountryService {
 
     private final AdminCountryRepository adminCountryRepository;
+    private final AdminHistoricalSheriffsService adminHistoricalSheriffsService;
 
     public Page<AdminCountry> getAdminCountries(Pageable pageable) {
         return adminCountryRepository.findAll(pageable);
@@ -30,7 +35,29 @@ public class AdminCountryService {
         return adminCountryRepository.save(adminCountry);
     }
 
-    public AdminCountry changeSheriff(AdminCountry adminCountry) {
-        return adminCountryRepository.save(adminCountry);
+    @Transactional
+    public AdminCountry changeSheriff(Long id, Long sheriffId) {
+        AdminCountry adminCountry = adminCountryRepository.findById(id).orElseThrow();
+        LocalDateTime oldSheriffStartDate = adminCountry.getSheriffStartDate();
+        Long actualSheriffId = adminCountry.getActualSheriffId();
+        LocalDateTime now = LocalDateTime.now();
+        AdminHistoricalSheriffs adminHistoricalSheriff = AdminHistoricalSheriffs.builder()
+                .id(null)
+                .countryId(id)
+                .playerId(actualSheriffId)
+                .startDate(oldSheriffStartDate)
+                .endDate(now)
+                .build();
+
+        adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
+
+        return AdminCountry.builder()
+                .id(id)
+                .name(adminCountry.getName())
+                .slug(adminCountry.getSlug())
+                .goldLimit(adminCountry.getGoldLimit())
+                .actualSheriffId(sheriffId)
+                .sheriffStartDate(now)
+                .build();
     }
 }

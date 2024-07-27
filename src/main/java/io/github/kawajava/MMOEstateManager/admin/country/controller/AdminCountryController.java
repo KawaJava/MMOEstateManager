@@ -47,6 +47,11 @@ public class AdminCountryController {
                 mapUpdatedAdminCountry(id, adminCountryGeneralInfoDto));
     }
 
+    @PutMapping("/{id}/changeSheriff/{sheriffId}")
+    public AdminCountry changeSheriff(@PathVariable Long id, @PathVariable Long sheriffId) {
+        return adminCountryService.changeSheriff(id, sheriffId);
+    }
+
     private AdminCountry mapUpdatedAdminCountry(
             Long countryId, AdminCountryGeneralInfoDto adminCountryGeneralInfoDto) {
         AdminCountry adminCountry = adminCountryService.getAdminCountry(countryId);
