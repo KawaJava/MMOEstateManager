@@ -1,8 +1,8 @@
 package io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.AdminHistoricalSheriffsService;
-import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.HistoricalSheriffsFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

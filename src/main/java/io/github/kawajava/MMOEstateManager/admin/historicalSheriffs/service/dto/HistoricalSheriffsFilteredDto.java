@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.player.controller.dto;
+package io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto;
 
 import lombok.Getter;
 

@@ -3,7 +3,7 @@ package io.github.kawajava.MMOEstateManager.admin.country.service;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.AdminHistoricalSheriffsService;
+import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -41,23 +41,34 @@ public class AdminCountryService {
         LocalDateTime oldSheriffStartDate = adminCountry.getSheriffStartDate();
         Long actualSheriffId = adminCountry.getActualSheriffId();
         LocalDateTime now = LocalDateTime.now();
-        AdminHistoricalSheriffs adminHistoricalSheriff = AdminHistoricalSheriffs.builder()
-                .id(null)
-                .countryId(countryId)
-                .playerId(actualSheriffId)
-                .startDate(oldSheriffStartDate)
-                .endDate(now)
-                .build();
+        AdminHistoricalSheriffs adminHistoricalSheriff = mapAdminHistoricalSheriffs(
+                countryId, actualSheriffId, oldSheriffStartDate, now);
 
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
 
-        return adminCountryRepository.save(AdminCountry.builder()
+        return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
+    }
+
+    private static AdminCountry mapAdminCountry(Long countryId, Long sheriffId,
+                                                AdminCountry adminCountry, LocalDateTime now) {
+        return AdminCountry.builder()
                 .id(countryId)
                 .name(adminCountry.getName())
                 .slug(adminCountry.getSlug())
                 .goldLimit(adminCountry.getGoldLimit())
                 .actualSheriffId(sheriffId)
                 .sheriffStartDate(now)
-                .build());
+                .build();
+    }
+
+    private static AdminHistoricalSheriffs mapAdminHistoricalSheriffs(
+            Long countryId, Long actualSheriffId, LocalDateTime oldSheriffStartDate, LocalDateTime now) {
+        return AdminHistoricalSheriffs.builder()
+                .id(null)
+                .countryId(countryId)
+                .playerId(actualSheriffId)
+                .startDate(oldSheriffStartDate)
+                .endDate(now)
+                .build();
     }
 }
