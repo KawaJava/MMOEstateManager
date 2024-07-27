@@ -19,7 +19,7 @@ public class AdminPlayerService {
         return adminPlayerRepository.findAll(pageable);
     }
 
-    public List<AdminPlayer> getInActiveAdminPlayers() {
+    public List<AdminPlayer> getInactiveAdminPlayers() {
         return adminPlayerRepository.findAll().stream()
                 .filter(adminPlayer -> !adminPlayer.isActive())
                 .toList();

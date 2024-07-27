@@ -21,9 +21,8 @@ public class AdminHistoricalSheriffsService {
         return adminHistoricalSheriffsRepository.findAll(pageable);
     }
 
-    public AdminHistoricalSheriffs createAdminHistoricalSheriff
-            (AdminHistoricalSheriffs adminHistoricalSheriff) {
-        return adminHistoricalSheriffsRepository.save(adminHistoricalSheriff);
+    public void createAdminHistoricalSheriff(AdminHistoricalSheriffs adminHistoricalSheriff) {
+        adminHistoricalSheriffsRepository.save(adminHistoricalSheriff);
     }
 
     public List<AdminHistoricalSheriffs> getFilteredData(

@@ -28,8 +28,8 @@ public class AdminPlayerController {
     }
 
     @GetMapping("/inactive")
-    public List<AdminPlayer> getInActiveAdminPlayers() {
-        return adminPlayerService.getInActiveAdminPlayers();
+    public List<AdminPlayer> getInactiveAdminPlayers() {
+        return adminPlayerService.getInactiveAdminPlayers();
     }
 
     @GetMapping("/{id}")

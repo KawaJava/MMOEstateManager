@@ -36,14 +36,14 @@ public class AdminCountryService {
     }
 
     @Transactional
-    public AdminCountry changeSheriff(Long id, Long sheriffId) {
-        AdminCountry adminCountry = adminCountryRepository.findById(id).orElseThrow();
+    public AdminCountry changeSheriff(Long countryId, Long sheriffId) {
+        AdminCountry adminCountry = adminCountryRepository.findById(countryId).orElseThrow();
         LocalDateTime oldSheriffStartDate = adminCountry.getSheriffStartDate();
         Long actualSheriffId = adminCountry.getActualSheriffId();
         LocalDateTime now = LocalDateTime.now();
         AdminHistoricalSheriffs adminHistoricalSheriff = AdminHistoricalSheriffs.builder()
                 .id(null)
-                .countryId(id)
+                .countryId(countryId)
                 .playerId(actualSheriffId)
                 .startDate(oldSheriffStartDate)
                 .endDate(now)
@@ -51,13 +51,13 @@ public class AdminCountryService {
 
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
 
-        return AdminCountry.builder()
-                .id(id)
+        return adminCountryRepository.save(AdminCountry.builder()
+                .id(countryId)
                 .name(adminCountry.getName())
                 .slug(adminCountry.getSlug())
                 .goldLimit(adminCountry.getGoldLimit())
                 .actualSheriffId(sheriffId)
                 .sheriffStartDate(now)
-                .build();
+                .build());
     }
 }

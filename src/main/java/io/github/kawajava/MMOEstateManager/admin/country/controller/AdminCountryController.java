@@ -40,16 +40,16 @@ public class AdminCountryController {
         return adminCountryService.createAdminCountry(mapAdminCountry(adminCountryDto));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public AdminCountry updateAdminCountryGeneralInfo(@PathVariable Long id,
             @RequestBody @Valid AdminCountryGeneralInfoDto adminCountryGeneralInfoDto) {
         return adminCountryService.updateAdminCountryGeneralInfo(
                 mapUpdatedAdminCountry(id, adminCountryGeneralInfoDto));
     }
 
-    @PutMapping("/{id}/changeSheriff/{sheriffId}")
-    public AdminCountry changeSheriff(@PathVariable Long id, @PathVariable Long sheriffId) {
-        return adminCountryService.changeSheriff(id, sheriffId);
+    @PatchMapping("/{countryId}/changeSheriff/{sheriffId}")
+    public AdminCountry changeSheriff(@PathVariable Long countryId, @PathVariable Long sheriffId) {
+        return adminCountryService.changeSheriff(countryId, sheriffId);
     }
 
     private AdminCountry mapUpdatedAdminCountry(
