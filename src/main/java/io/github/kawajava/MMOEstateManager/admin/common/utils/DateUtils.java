@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service;
+package io.github.kawajava.MMOEstateManager.admin.common.utils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

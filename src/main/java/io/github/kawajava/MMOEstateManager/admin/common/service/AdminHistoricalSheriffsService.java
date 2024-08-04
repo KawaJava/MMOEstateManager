@@ -1,8 +1,8 @@
 package io.github.kawajava.MMOEstateManager.admin.common.service;
 
+import io.github.kawajava.MMOEstateManager.admin.common.utils.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.repository.AdminHistoricalSheriffsRepository;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
