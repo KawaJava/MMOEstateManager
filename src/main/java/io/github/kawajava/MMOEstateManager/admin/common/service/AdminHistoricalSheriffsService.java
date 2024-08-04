@@ -3,14 +3,15 @@ package io.github.kawajava.MMOEstateManager.admin.common.service;
 import io.github.kawajava.MMOEstateManager.admin.common.utils.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.repository.AdminHistoricalSheriffsRepository;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFiltered;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
+
+import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalSheriffsFilter.filterHistoricalSheriffs;
 
 @Service
 @RequiredArgsConstructor
@@ -27,27 +28,11 @@ public class AdminHistoricalSheriffsService {
     }
 
     public List<AdminHistoricalSheriffs> getFilteredData(
-            HistoricalSheriffsFilteredDto filteredDto) {
+            HistoricalSheriffsFiltered filteredDto) {
         List<AdminHistoricalSheriffs> all = adminHistoricalSheriffsRepository.findAll();
 
-        LocalDateTime startDateTime = DateUtils.asStartOfDay(filteredDto.getStartDate());
-        LocalDateTime endDateTime = DateUtils.atEndOfDay(filteredDto.getEndDate());
-
+        var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());
+        var endDateTime = DateUtils.atEndOfDay(filteredDto.endDate());
         return filterHistoricalSheriffs(filteredDto, all, startDateTime, endDateTime);
-    }
-
-    private static List<AdminHistoricalSheriffs> filterHistoricalSheriffs(
-            HistoricalSheriffsFilteredDto filteredDto, List<AdminHistoricalSheriffs> all,
-            LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        return all.stream()
-                .filter(data -> filteredDto.getCountryId() == null ||
-                        data.getCountryId().equals(filteredDto.getCountryId()))
-                .filter(data -> filteredDto.getPlayerId() == null ||
-                        data.getPlayerId().equals(filteredDto.getPlayerId()))
-                .filter(data -> filteredDto.getStartDate() == null ||
-                        !data.getStartDate().isBefore(startDateTime))
-                .filter(data -> filteredDto.getEndDate() == null ||
-                        !data.getEndDate().isAfter(endDateTime))
-                .toList();
     }
 }

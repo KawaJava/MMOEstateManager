@@ -37,11 +37,11 @@ public class AdminCountryService {
 
     @Transactional
     public AdminCountry changeSheriff(Long countryId, Long sheriffId) {
-        AdminCountry adminCountry = adminCountryRepository.findById(countryId).orElseThrow();
-        LocalDateTime oldSheriffStartDate = adminCountry.getSheriffStartDate();
+        var adminCountry = adminCountryRepository.findById(countryId).orElseThrow();
+        var oldSheriffStartDate = adminCountry.getSheriffStartDate();
         Long actualSheriffId = adminCountry.getActualSheriffId();
-        LocalDateTime now = LocalDateTime.now();
-        AdminHistoricalSheriffs adminHistoricalSheriff = mapAdminHistoricalSheriffs(
+        var now = LocalDateTime.now();
+        var adminHistoricalSheriff = mapAdminHistoricalSheriffs(
                 countryId, actualSheriffId, oldSheriffStartDate, now);
 
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
