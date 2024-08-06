@@ -2,7 +2,7 @@ package io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFiltered;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +24,7 @@ public class AdminHistoricalSheriffsController {
 
     @PostMapping("/filtered")
     public List<AdminHistoricalSheriffs> getFilteredData(
-            @RequestBody HistoricalSheriffsFiltered filteredDto) {
+            @RequestBody HistoricalSheriffsFilteredDto filteredDto) {
         return adminHistoricalSheriffsService.getFilteredData(filteredDto);
     }
 

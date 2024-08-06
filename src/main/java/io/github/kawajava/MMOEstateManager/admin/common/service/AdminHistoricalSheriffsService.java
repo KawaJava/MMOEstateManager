@@ -3,7 +3,7 @@ package io.github.kawajava.MMOEstateManager.admin.common.service;
 import io.github.kawajava.MMOEstateManager.admin.common.utils.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.repository.AdminHistoricalSheriffsRepository;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFiltered;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalSheriffsFilter.filterHistoricalSheriffs;
+import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalSheriffsFilterService.filterHistoricalSheriffs;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public class AdminHistoricalSheriffsService {
     }
 
     public List<AdminHistoricalSheriffs> getFilteredData(
-            HistoricalSheriffsFiltered filteredDto) {
+            HistoricalSheriffsFilteredDto filteredDto) {
         List<AdminHistoricalSheriffs> all = adminHistoricalSheriffsRepository.findAll();
 
         var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());
