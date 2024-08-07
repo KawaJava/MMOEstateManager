@@ -1,5 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.country.service;
 
+import io.github.kawajava.MMOEstateManager.admin.common.exception.NotExistingCountryException;
+import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.lang.module.ResolutionException;
 import java.time.LocalDateTime;
 
 @Service
@@ -24,7 +27,7 @@ public class AdminCountryService {
     }
 
     public AdminCountry getAdminCountry(Long id) {
-        return adminCountryRepository.findById(id).orElseThrow();
+        return adminCountryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Country", id));
     }
 
     public AdminCountry createAdminCountry(AdminCountry adminCountry) {

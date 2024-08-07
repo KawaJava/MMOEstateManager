@@ -1,5 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.player.service;
 
+import io.github.kawajava.MMOEstateManager.admin.common.exception.NotExistingPlayerException;
+import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.repository.AdminPlayerRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +28,7 @@ public class AdminPlayerService {
     }
 
     public AdminPlayer getAdminPlayer(Long id) {
-        return adminPlayerRepository.findById(id).orElseThrow();
+        return adminPlayerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player", id));
     }
 
     public AdminPlayer createAdminPlayer(AdminPlayer adminPlayer) {
