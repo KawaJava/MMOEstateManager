@@ -1,6 +1,5 @@
 package io.github.kawajava.MMOEstateManager.admin.player.service;
 
-import io.github.kawajava.MMOEstateManager.admin.common.exception.NotExistingPlayerException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.repository.AdminPlayerRepository;

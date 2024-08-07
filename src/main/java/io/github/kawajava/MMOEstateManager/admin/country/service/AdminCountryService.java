@@ -1,6 +1,5 @@
 package io.github.kawajava.MMOEstateManager.admin.country.service;
 
-import io.github.kawajava.MMOEstateManager.admin.common.exception.NotExistingCountryException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.lang.module.ResolutionException;
 import java.time.LocalDateTime;
 
 @Service
