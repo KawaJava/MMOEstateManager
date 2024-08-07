@@ -21,11 +21,11 @@ public class AdminBorough {
     private Long id;
     private String name;
     private String slug;
+    private Long countryId;
     private Long actualLeaderId;
     private LocalDateTime leaderStartDate;
     private BigDecimal actualGold;
     private Long goldAddedBy;
     private LocalDateTime dateAdded;
     private Boolean emailSend;
-
 }

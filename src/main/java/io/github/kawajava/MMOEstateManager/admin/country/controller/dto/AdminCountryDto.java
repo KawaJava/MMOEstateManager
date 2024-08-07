@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 
 @Getter
 public class AdminCountryDto {
-
     @NotBlank
     @Length(min = 3)
     private String name;
