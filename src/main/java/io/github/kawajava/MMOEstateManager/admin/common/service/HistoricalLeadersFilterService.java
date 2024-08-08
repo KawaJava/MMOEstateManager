@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service;
+package io.github.kawajava.MMOEstateManager.admin.common.service;
 
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;

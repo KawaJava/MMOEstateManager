@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service;
+package io.github.kawajava.MMOEstateManager.admin.common.service;
 
 import io.github.kawajava.MMOEstateManager.admin.common.utils.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.HistoricalLeadersFilterService.filterHistoricalLeaders;
+import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalLeadersFilterService.filterHistoricalLeaders;
 
 @Service
 @RequiredArgsConstructor

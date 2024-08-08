@@ -1,5 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service;
 
+import io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalLeadersFilterService;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import static io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.HistoricalLeadersFilterService.filterHistoricalLeaders;
+import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalLeadersFilterService.filterHistoricalLeaders;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)

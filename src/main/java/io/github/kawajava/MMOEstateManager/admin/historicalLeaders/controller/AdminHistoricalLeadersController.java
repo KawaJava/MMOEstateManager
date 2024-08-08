@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.AdminHistoricalLeadersService;
+import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalLeadersService;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
