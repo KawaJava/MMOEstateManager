@@ -4,7 +4,6 @@ import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBor
 import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughGeneralInfoDto;
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.borough.service.AdminBoroughService;
-import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
