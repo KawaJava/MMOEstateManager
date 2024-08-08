@@ -58,7 +58,7 @@ public class AdminCountryController {
         return AdminCountry.builder()
                 .id(countryId)
                 .name(adminCountryGeneralInfoDto.getName())
-                .slug(adminCountryGeneralInfoDto.getSlug())
+                .slug(slugifySlug(adminCountryGeneralInfoDto.getSlug()))
                 .actualSheriffId(adminCountry.getActualSheriffId())
                 .sheriffStartDate(adminCountry.getSheriffStartDate())
                 .goldLimit(adminCountry.getGoldLimit())

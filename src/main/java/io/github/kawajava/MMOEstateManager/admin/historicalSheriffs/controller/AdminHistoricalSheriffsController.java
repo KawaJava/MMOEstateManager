@@ -27,6 +27,4 @@ public class AdminHistoricalSheriffsController {
             @RequestBody HistoricalSheriffsFilteredDto filteredDto) {
         return adminHistoricalSheriffsService.getFilteredData(filteredDto);
     }
-
-
 }

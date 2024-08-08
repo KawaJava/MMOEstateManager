@@ -25,7 +25,7 @@ public class AdminBoroughService {
     public AdminBorough createAdminBorough(AdminBorough adminBorough) {
         return adminBoroughRepository.save(adminBorough);
     }
-
-
-
+    public AdminBorough updateAdminBoroughGeneralInfo(AdminBorough adminBorough) {
+        return adminBoroughRepository.save(adminBorough);
+    }
 }

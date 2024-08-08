@@ -1,6 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.borough.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughDto;
+import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughGeneralInfoDto;
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.borough.service.AdminBoroughService;
 import jakarta.validation.Valid;
@@ -33,6 +34,29 @@ public class AdminBoroughController {
     @PostMapping
     public AdminBorough createAdminBorough(@RequestBody @Valid AdminBoroughDto adminBoroughDto) {
         return adminBoroughService.createAdminBorough(mapAdminBorough(adminBoroughDto));
+    }
+
+    @PatchMapping("/{id}")
+    public AdminBorough updateAdminBoroughGeneralInfo(@PathVariable Long id,
+                                                      @RequestBody @Valid AdminBoroughGeneralInfoDto adminBoroughGeneralInfo ) {
+        return adminBoroughService.updateAdminBoroughGeneralInfo(
+                mapUpdatedAdminBorough(id, adminBoroughGeneralInfo));
+    }
+    private AdminBorough mapUpdatedAdminBorough(
+            Long boroughId, AdminBoroughGeneralInfoDto adminBoroughGeneralInfoDto) {
+        AdminBorough adminBorough = adminBoroughService.getAdminBorough(boroughId);
+        return AdminBorough.builder()
+                .id(boroughId)
+                .name(adminBoroughGeneralInfoDto.getName())
+                .slug(adminBoroughGeneralInfoDto.getSlug())
+                .countryId(adminBoroughGeneralInfoDto.getCountryId())
+                .actualLeaderId(adminBorough.getActualLeaderId())
+                .leaderStartDate(adminBorough.getLeaderStartDate())
+                .actualGold(adminBorough.getActualGold())
+                .goldAddedBy(adminBorough.getGoldAddedBy())
+                .dateAdded(adminBorough.getDateAdded())
+                .emailSend(adminBorough.getEmailSend())
+                .build();
     }
 
     private AdminBorough mapAdminBorough(AdminBoroughDto adminBoroughDto) {
