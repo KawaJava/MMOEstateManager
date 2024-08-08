@@ -3,7 +3,6 @@ package io.github.kawajava.MMOEstateManager.admin.country.service;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +51,4 @@ public class AdminCountryService {
 
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
-
-
 }
