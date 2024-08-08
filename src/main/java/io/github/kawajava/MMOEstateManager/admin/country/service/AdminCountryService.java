@@ -38,7 +38,7 @@ public class AdminCountryService {
 
     @Transactional
     public AdminCountry changeSheriff(Long countryId, Long sheriffId) {
-        var adminCountry = adminCountryRepository.findById(countryId).orElseThrow();
+        var adminCountry = adminCountryRepository.findById(countryId).orElseThrow(() -> new ResourceNotFoundException("Country", countryId));
         var oldSheriffStartDate = adminCountry.getSheriffStartDate();
         Long actualSheriffId = adminCountry.getActualSheriffId();
         var now = LocalDateTime.now();
