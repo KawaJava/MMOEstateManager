@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminBorough;
+import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminHistoricalLeaders;
+
 @Service
 @RequiredArgsConstructor
 public class AdminBoroughService {
@@ -46,34 +49,5 @@ public class AdminBoroughService {
         adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
 
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));
-    }
-
-    private static AdminBorough mapAdminBorough(Long boroughId, Long leaderId,
-                                                AdminBorough adminBorough, LocalDateTime now) {
-        return AdminBorough.builder()
-                .id(boroughId)
-                .name(adminBorough.getName())
-                .slug(adminBorough.getSlug())
-                .actualGold(adminBorough.getActualGold())
-                .countryId(adminBorough.getCountryId())
-                .goldAddedBy(adminBorough.getGoldAddedBy())
-                .actualLeaderId(leaderId)
-                .leaderStartDate(now)
-                .actualGold(adminBorough.getActualGold())
-                .goldAddedBy(adminBorough.getGoldAddedBy())
-                .dateAdded(adminBorough.getDateAdded())
-                .emailSend(adminBorough.getEmailSend())
-                .build();
-    }
-
-    private static AdminHistoricalLeaders mapAdminHistoricalLeaders(
-            Long boroughId, Long actualLeaderId, LocalDateTime oldSheriffStartDate, LocalDateTime now) {
-        return AdminHistoricalLeaders.builder()
-                .id(null)
-                .boroughId(boroughId)
-                .playerId(actualLeaderId)
-                .startDate(oldSheriffStartDate)
-                .endDate(now)
-                .build();
     }
 }

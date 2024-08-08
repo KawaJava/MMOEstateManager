@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+import static io.github.kawajava.MMOEstateManager.admin.country.service.mapper.AdminCountryMapper.mapAdminCountry;
+import static io.github.kawajava.MMOEstateManager.admin.country.service.mapper.AdminCountryMapper.mapAdminHistoricalSheriffs;
+
 @Service
 @RequiredArgsConstructor
 public class AdminCountryService {
@@ -50,26 +53,5 @@ public class AdminCountryService {
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
 
-    private static AdminCountry mapAdminCountry(Long countryId, Long sheriffId,
-                                                AdminCountry adminCountry, LocalDateTime now) {
-        return AdminCountry.builder()
-                .id(countryId)
-                .name(adminCountry.getName())
-                .slug(adminCountry.getSlug())
-                .goldLimit(adminCountry.getGoldLimit())
-                .actualSheriffId(sheriffId)
-                .sheriffStartDate(now)
-                .build();
-    }
 
-    private static AdminHistoricalSheriffs mapAdminHistoricalSheriffs(
-            Long countryId, Long actualSheriffId, LocalDateTime oldSheriffStartDate, LocalDateTime now) {
-        return AdminHistoricalSheriffs.builder()
-                .id(null)
-                .countryId(countryId)
-                .playerId(actualSheriffId)
-                .startDate(oldSheriffStartDate)
-                .endDate(now)
-                .build();
-    }
 }
