@@ -2,10 +2,12 @@ package io.github.kawajava.MMOEstateManager.admin.common.service;
 
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class HistoricalSheriffsFilterService {
 
     public static List<AdminHistoricalSheriffs> filterHistoricalSheriffs(
