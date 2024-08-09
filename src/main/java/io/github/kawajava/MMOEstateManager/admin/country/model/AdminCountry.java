@@ -24,5 +24,4 @@ public class AdminCountry {
     private Long actualSheriffId;
     private BigDecimal goldLimit;
     private LocalDateTime sheriffStartDate;
-
 }

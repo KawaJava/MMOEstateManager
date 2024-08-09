@@ -11,9 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
+import static io.github.kawajava.MMOEstateManager.admin.country.controller.mapper.AdminCountryDtoMapper.mapAdminCountryDto;
 import static io.github.kawajava.MMOEstateManager.admin.utils.SlugifyUtils.slugifySlug;
 
 @RestController
@@ -37,7 +35,7 @@ public class AdminCountryController {
 
     @PostMapping
     public AdminCountry createAdminCountry(@RequestBody @Valid AdminCountryDto adminCountryDto) {
-        return adminCountryService.createAdminCountry(mapAdminCountry(adminCountryDto));
+        return adminCountryService.createAdminCountry(mapAdminCountryDto(adminCountryDto, defaultGoldLimit));
     }
 
     @PatchMapping("/{id}")
@@ -65,16 +63,5 @@ public class AdminCountryController {
                 .build();
     }
 
-    private AdminCountry mapAdminCountry(AdminCountryDto adminCountryDto) {
-        return AdminCountry.builder()
-                .id(null)
-                .name(adminCountryDto.getName())
-                .slug(slugifySlug(adminCountryDto.getSlug()))
-                .actualSheriffId(adminCountryDto.getActualSheriffId())
-                .goldLimit(adminCountryDto.getGoldLimit() == null ? BigDecimal.valueOf(defaultGoldLimit) :
-                        adminCountryDto.getGoldLimit())
-                .sheriffStartDate(LocalDateTime.now())
-                .build();
-    };
 
 }
