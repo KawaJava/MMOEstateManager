@@ -42,10 +42,9 @@ public class AdminCountryService {
     public AdminCountry changeSheriff(Long countryId, Long sheriffId) {
         var adminCountry = adminCountryRepository.findById(countryId).orElseThrow(() -> new ResourceNotFoundException("Country", countryId));
         var oldSheriffStartDate = adminCountry.getSheriffStartDate();
-        Long actualSheriffId = adminCountry.getActualSheriffId();
+        var actualSheriffId = adminCountry.getActualSheriffId();
         var now = LocalDateTime.now();
-        var adminHistoricalSheriff = mapAdminHistoricalSheriffs(
-                countryId, actualSheriffId, oldSheriffStartDate, now);
+        var adminHistoricalSheriff = mapAdminHistoricalSheriffs(countryId, actualSheriffId, oldSheriffStartDate, now);
 
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
 

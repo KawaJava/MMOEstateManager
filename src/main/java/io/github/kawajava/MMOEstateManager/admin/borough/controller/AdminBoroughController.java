@@ -48,8 +48,7 @@ public class AdminBoroughController {
         return adminBoroughService.changeLeader(boroughId, leaderId);
     }
 
-    private AdminBorough mapUpdatedAdminBorough(
-            Long boroughId, AdminBoroughGeneralInfoDto adminBoroughGeneralInfoDto) {
+    private AdminBorough mapUpdatedAdminBorough(Long boroughId, AdminBoroughGeneralInfoDto adminBoroughGeneralInfoDto) {
         AdminBorough adminBorough = adminBoroughService.getAdminBorough(boroughId);
         return AdminBorough.builder()
                 .id(boroughId)

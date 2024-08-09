@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/admin/gold-histories")
+@RequestMapping("/admin/history-golds")
 public class AdminGoldHistoryController {
 
     private final AdminGoldHistoryService adminGoldHistoryService;
@@ -22,8 +22,7 @@ public class AdminGoldHistoryController {
         return adminGoldHistoryService.getAdminGoldHistory(pageable);
     }
     @PostMapping("/filtered")
-    public List<AdminGoldHistory> getFilteredData(
-            @RequestBody GoldHistoryFilteredDto filteredDto) {
+    public List<AdminGoldHistory> getFilteredData(@RequestBody GoldHistoryFilteredDto filteredDto) {
         return adminGoldHistoryService.getFilteredData(filteredDto);
     }
 }

@@ -22,8 +22,7 @@ public class AdminHistoricalLeadersController {
         return adminHistoricalLeadersService.getAdminHistoricalLeaders(pageable);
     }
     @PostMapping("/filtered")
-    public List<AdminHistoricalLeaders> getFilteredData(
-            @RequestBody HistoricalLeadersFilteredDto filteredDto) {
+    public List<AdminHistoricalLeaders> getFilteredData(@RequestBody HistoricalLeadersFilteredDto filteredDto) {
         return adminHistoricalLeadersService.getFilteredData(filteredDto);
     }
 }

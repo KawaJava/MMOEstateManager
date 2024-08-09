@@ -22,13 +22,10 @@ public class AdminHistoricalSheriffsService {
     public Page<AdminHistoricalSheriffs> getAdminHistoricalSheriffs(Pageable pageable) {
         return adminHistoricalSheriffsRepository.findAll(pageable);
     }
-
     public void createAdminHistoricalSheriff(AdminHistoricalSheriffs adminHistoricalSheriff) {
         adminHistoricalSheriffsRepository.save(adminHistoricalSheriff);
     }
-
-    public List<AdminHistoricalSheriffs> getFilteredData(
-            HistoricalSheriffsFilteredDto filteredDto) {
+    public List<AdminHistoricalSheriffs> getFilteredData(HistoricalSheriffsFilteredDto filteredDto) {
         List<AdminHistoricalSheriffs> all = adminHistoricalSheriffsRepository.findAll();
 
         var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());

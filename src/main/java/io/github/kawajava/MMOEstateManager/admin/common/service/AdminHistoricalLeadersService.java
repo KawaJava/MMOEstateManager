@@ -25,8 +25,7 @@ public class AdminHistoricalLeadersService {
     public void createAdminHistoricalLeader(AdminHistoricalLeaders adminHistoricalLeader) {
         adminHistoricalLeadersRepository.save(adminHistoricalLeader);
     }
-    public List<AdminHistoricalLeaders> getFilteredData(
-            HistoricalLeadersFilteredDto filteredDto) {
+    public List<AdminHistoricalLeaders> getFilteredData(HistoricalLeadersFilteredDto filteredDto) {
         List<AdminHistoricalLeaders> all = adminHistoricalLeadersRepository.findAll();
         var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());
         var endDateTime = DateUtils.atEndOfDay(filteredDto.endDate());

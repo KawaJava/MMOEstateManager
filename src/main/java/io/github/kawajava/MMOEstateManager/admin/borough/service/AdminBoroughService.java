@@ -25,11 +25,9 @@ public class AdminBoroughService {
     public Page<AdminBorough> getAdminBoroughs(Pageable pageable) {
         return adminBoroughRepository.findAll(pageable);
     }
-
     public AdminBorough getAdminBorough(Long id) {
         return adminBoroughRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Borough", id));
     }
-
     public AdminBorough createAdminBorough(AdminBorough adminBorough) {
         return adminBoroughRepository.save(adminBorough);
     }
@@ -40,13 +38,11 @@ public class AdminBoroughService {
     public AdminBorough changeLeader(Long boroughId, Long leaderId) {
         var adminBorough = adminBoroughRepository.findById(boroughId).orElseThrow(() -> new ResourceNotFoundException("Borough", boroughId));
         var oldSheriffStartDate = adminBorough.getLeaderStartDate();
-        Long actualLeaderId = adminBorough.getActualLeaderId();
+        var actualLeaderId = adminBorough.getActualLeaderId();
         var now = LocalDateTime.now();
-        var adminHistoricalLeader = mapAdminHistoricalLeaders(
-                leaderId, actualLeaderId, oldSheriffStartDate, now);
+        var adminHistoricalLeader = mapAdminHistoricalLeaders(leaderId, actualLeaderId, oldSheriffStartDate, now);
 
         adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
-
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));
     }
 }

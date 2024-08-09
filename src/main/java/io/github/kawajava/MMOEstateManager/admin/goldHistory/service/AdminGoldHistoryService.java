@@ -23,16 +23,14 @@ public class AdminGoldHistoryService {
     }
 
     public List<AdminGoldHistory> getFilteredData(GoldHistoryFilteredDto filteredDto) {
-        List<AdminGoldHistory> all = adminGoldHistoryRepository.findAll();
+        var all = adminGoldHistoryRepository.findAll();
 
         var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());
         var endDateTime = DateUtils.atEndOfDay(filteredDto.endDate());
         return filterGoldHistory(all, filteredDto, startDateTime, endDateTime);
-
     }
     public static List<AdminGoldHistory> filterGoldHistory(List<AdminGoldHistory> all,
-            GoldHistoryFilteredDto filteredDto,
-            LocalDateTime startDateTime, LocalDateTime endDateTime) {
+            GoldHistoryFilteredDto filteredDto, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return all.stream()
                 .filter(data -> filteredDto.boroughId() == null ||
                         data.getBoroughId().equals(filteredDto.boroughId()))
