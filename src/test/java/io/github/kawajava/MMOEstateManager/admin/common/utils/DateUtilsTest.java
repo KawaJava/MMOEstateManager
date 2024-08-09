@@ -33,7 +33,7 @@ class DateUtilsTest {
         var date = LocalDate.of(2024, 7,26);
         var before = LocalDateTime.of(2024,7,26,23,59, 59);
         var after = LocalDateTime.of(2024,7,27,0,0, 0);
-        String expectedDateTime ="2024-07-26T23:59:59.999999999";
+        var expectedDateTime ="2024-07-26T23:59:59.999999999";
         LocalDateTime newDate = DateUtils.atEndOfDay(date);
         assertThat(newDate).isNotNull();
         assertThat(newDate).isAfter(before);

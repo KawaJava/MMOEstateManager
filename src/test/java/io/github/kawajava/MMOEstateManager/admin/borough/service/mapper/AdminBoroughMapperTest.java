@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminBorough;
 import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminHistoricalLeaders;
 
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,10 +18,10 @@ class AdminBoroughMapperTest {
 
     @Test
     public void shouldMapAdminBoroughCorrectly() {
-        Long boroughId = 1L;
-        Long leaderId = 2L;
-        LocalDateTime now = LocalDateTime.now();
-        AdminBorough adminBorough = AdminBorough.builder()
+        var boroughId = 1L;
+        var leaderId = 2L;
+        var now = LocalDateTime.now();
+        var adminBorough = AdminBorough.builder()
                 .id(boroughId)
                 .name("Test Borough")
                 .slug("test-borough")
@@ -34,7 +33,7 @@ class AdminBoroughMapperTest {
                 .emailSend(true)
                 .build();
 
-        AdminBorough result = mapAdminBorough(boroughId, leaderId, adminBorough, now);
+        var result = mapAdminBorough(boroughId, leaderId, adminBorough, now);
 
         assertThat(result.getId()).isEqualTo(boroughId);
         assertThat(result.getName()).isEqualTo("Test Borough");
@@ -50,12 +49,12 @@ class AdminBoroughMapperTest {
 
     @Test
     public void shouldMapAdminHistoricalLeadersCorrectly() {
-        Long boroughId = 1L;
-        Long actualLeaderId = 2L;
-        LocalDateTime oldStartDate = LocalDateTime.of(2022, 1, 1, 0, 0);
-        LocalDateTime now = LocalDateTime.of(2022, 2, 1, 0, 0);
+        var boroughId = 1L;
+        var actualLeaderId = 2L;
+        var oldStartDate = LocalDateTime.of(2022, 1, 1, 0, 0);
+        var now = LocalDateTime.of(2022, 2, 1, 0, 0);
 
-        AdminHistoricalLeaders result = mapAdminHistoricalLeaders(boroughId, actualLeaderId, oldStartDate, now);
+        var result = mapAdminHistoricalLeaders(boroughId, actualLeaderId, oldStartDate, now);
 
         assertThat(result.getId()).isNull();
         assertThat(result.getBoroughId()).isEqualTo(boroughId);

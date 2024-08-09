@@ -2,14 +2,12 @@ package io.github.kawajava.MMOEstateManager.admin.common.service;
 
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.controller.dto.GoldHistoryFilteredDto;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class AdminGoldHistoryFilterService {
 
     public static List<AdminGoldHistory> filterGoldHistory(List<AdminGoldHistory> all,

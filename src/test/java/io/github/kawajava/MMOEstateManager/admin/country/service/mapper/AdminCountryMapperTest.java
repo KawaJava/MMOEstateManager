@@ -3,7 +3,6 @@ package io.github.kawajava.MMOEstateManager.admin.country.service.mapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,17 +16,17 @@ class AdminCountryMapperTest {
 
     @Test
     public void shouldMapAdminCountryCorrectly() {
-        Long countryId = 1L;
-        Long sheriffId = 2L;
-        LocalDateTime now = LocalDateTime.now();
-        AdminCountry adminCountry = AdminCountry.builder()
+        var countryId = 1L;
+        var sheriffId = 2L;
+        var now = LocalDateTime.now();
+        var adminCountry = AdminCountry.builder()
                 .id(countryId)
                 .name("Test Country")
                 .slug("test-country")
                 .goldLimit(BigDecimal.valueOf(1000))
                 .build();
 
-        AdminCountry result = mapAdminCountry(countryId, sheriffId, adminCountry, now);
+        var result = mapAdminCountry(countryId, sheriffId, adminCountry, now);
 
         assertThat(result.getId()).isEqualTo(countryId);
         assertThat(result.getName()).isEqualTo("Test Country");
@@ -39,12 +38,12 @@ class AdminCountryMapperTest {
 
     @Test
     public void shouldMapAdminHistoricalSheriffsCorrectly() {
-        Long countryId = 1L;
-        Long actualSheriffId = 2L;
-        LocalDateTime oldSheriffStartDate = LocalDateTime.of(2022, 1, 1, 0, 0);
-        LocalDateTime now = LocalDateTime.of(2022, 2, 1, 0, 0);
+        var countryId = 1L;
+        var actualSheriffId = 2L;
+        var oldSheriffStartDate = LocalDateTime.of(2022, 1, 1, 0, 0);
+        var now = LocalDateTime.of(2022, 2, 1, 0, 0);
 
-        AdminHistoricalSheriffs result = mapAdminHistoricalSheriffs(countryId, actualSheriffId, oldSheriffStartDate, now);
+        var result = mapAdminHistoricalSheriffs(countryId, actualSheriffId, oldSheriffStartDate, now);
 
         assertThat(result.getId()).isNull();
         assertThat(result.getCountryId()).isEqualTo(countryId);
