@@ -4,9 +4,6 @@ import io.github.kawajava.MMOEstateManager.admin.common.utils.DateUtils;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.controller.dto.GoldHistoryFilteredDto;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.repository.AdminGoldHistoryRepository;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalSheriffsFilterService.filterHistoricalSheriffs;
 
 @Service
 @RequiredArgsConstructor

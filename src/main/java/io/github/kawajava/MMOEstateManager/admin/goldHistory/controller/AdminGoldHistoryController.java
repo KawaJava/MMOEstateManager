@@ -1,11 +1,8 @@
 package io.github.kawajava.MMOEstateManager.admin.goldHistory.controller;
 
-import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.controller.dto.GoldHistoryFilteredDto;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.service.AdminGoldHistoryService;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
