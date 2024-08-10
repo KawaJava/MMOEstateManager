@@ -37,10 +37,10 @@ public class AdminBoroughService {
     @Transactional
     public AdminBorough changeLeader(Long boroughId, Long leaderId) {
         var adminBorough = adminBoroughRepository.findById(boroughId).orElseThrow(() -> new ResourceNotFoundException("Borough", boroughId));
-        var oldSheriffStartDate = adminBorough.getLeaderStartDate();
+        var oldLeaderStartDate = adminBorough.getLeaderStartDate();
         var actualLeaderId = adminBorough.getActualLeaderId();
         var now = LocalDateTime.now();
-        var adminHistoricalLeader = mapAdminHistoricalLeaders(leaderId, actualLeaderId, oldSheriffStartDate, now);
+        var adminHistoricalLeader = mapAdminHistoricalLeaders(boroughId, actualLeaderId, oldLeaderStartDate, now);
 
         adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));

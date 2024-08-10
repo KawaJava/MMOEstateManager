@@ -47,7 +47,6 @@ public class AdminCountryService {
         var adminHistoricalSheriff = mapAdminHistoricalSheriffs(countryId, actualSheriffId, oldSheriffStartDate, now);
 
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
-
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
 }

@@ -26,8 +26,7 @@ public class AdminHistoricalSheriffsService {
         adminHistoricalSheriffsRepository.save(adminHistoricalSheriff);
     }
     public List<AdminHistoricalSheriffs> getFilteredData(HistoricalSheriffsFilteredDto filteredDto) {
-        List<AdminHistoricalSheriffs> all = adminHistoricalSheriffsRepository.findAll();
-
+        var all = adminHistoricalSheriffsRepository.findAll();
         var startDateTime = DateUtils.asStartOfDay(filteredDto.startDate());
         var endDateTime = DateUtils.atEndOfDay(filteredDto.endDate());
         return filterHistoricalSheriffs(filteredDto, all, startDateTime, endDateTime);
