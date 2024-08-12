@@ -1,6 +1,5 @@
-package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service;
+package io.github.kawajava.MMOEstateManager.admin.common.service;
 
-import io.github.kawajava.MMOEstateManager.admin.common.service.HistoricalLeadersFilterService;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
 import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.goldHistory.controller.dto;
+package io.github.kawajava.MMOEstateManager.admin.goldHistory.service.dto;
 
 import java.time.LocalDate;
 

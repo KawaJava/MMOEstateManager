@@ -1,6 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.common.service;
 
-import io.github.kawajava.MMOEstateManager.admin.goldHistory.controller.dto.GoldHistoryFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.goldHistory.service.dto.GoldHistoryFilteredDto;
 import io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory;
 import org.springframework.stereotype.Service;
 
