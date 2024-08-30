@@ -53,7 +53,7 @@ public class AdminBoroughController {
         return AdminBorough.builder()
                 .id(boroughId)
                 .name(adminBoroughGeneralInfoDto.getName())
-                .slug(adminBoroughGeneralInfoDto.getSlug())
+                .slug(slugifySlug(adminBoroughGeneralInfoDto.getSlug()))
                 .countryId(adminBoroughGeneralInfoDto.getCountryId())
                 .actualLeaderId(adminBorough.getActualLeaderId())
                 .leaderStartDate(adminBorough.getLeaderStartDate())

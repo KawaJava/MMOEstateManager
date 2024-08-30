@@ -20,6 +20,12 @@ public class AdminPlayerService {
         return adminPlayerRepository.findAll(pageable);
     }
 
+    public List<AdminPlayer> getAdminPlayersAsList() {
+        return adminPlayerRepository.findAll().stream()
+                .filter(AdminPlayer::isActive)
+                .toList();
+    }
+
     public List<AdminPlayer> getInactiveAdminPlayers() {
         return adminPlayerRepository.findAll().stream()
                 .filter(adminPlayer -> !adminPlayer.isActive())
@@ -45,4 +51,5 @@ public class AdminPlayerService {
     public void deleteAdminPlayer(Long id) {
         adminPlayerRepository.deleteById(id);
     }
+
 }

@@ -27,6 +27,11 @@ public class AdminPlayerController {
         return adminPlayerService.getAdminPlayers(pageable);
     }
 
+    @GetMapping("/list")
+    public List<AdminPlayer> getAdminPlayersAsList() {
+        return adminPlayerService.getAdminPlayersAsList();
+    }
+
     @GetMapping("/inactive")
     public List<AdminPlayer> getInactiveAdminPlayers() {
         return adminPlayerService.getInactiveAdminPlayers();

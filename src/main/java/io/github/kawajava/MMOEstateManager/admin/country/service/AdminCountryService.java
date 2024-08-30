@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static io.github.kawajava.MMOEstateManager.admin.country.service.mapper.AdminCountryMapper.mapAdminCountry;
 import static io.github.kawajava.MMOEstateManager.admin.country.service.mapper.AdminCountryMapper.mapAdminHistoricalSheriffs;
@@ -24,6 +25,10 @@ public class AdminCountryService {
 
     public Page<AdminCountry> getAdminCountries(Pageable pageable) {
         return adminCountryRepository.findAll(pageable);
+    }
+
+    public List<AdminCountry> getAdminCountriesAsList() {
+        return adminCountryRepository.findAll();
     }
 
     public AdminCountry getAdminCountry(Long id) {
@@ -49,4 +54,5 @@ public class AdminCountryService {
         adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
+
 }

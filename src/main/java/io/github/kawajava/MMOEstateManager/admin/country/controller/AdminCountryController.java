@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static io.github.kawajava.MMOEstateManager.admin.country.controller.mapper.AdminCountryDtoMapper.mapAdminCountryDto;
 import static io.github.kawajava.MMOEstateManager.admin.utils.SlugifyUtils.slugifySlug;
 
@@ -26,6 +28,11 @@ public class AdminCountryController {
     @GetMapping
     public Page<AdminCountry> getAdminCountries(Pageable pageable) {
         return adminCountryService.getAdminCountries(pageable);
+    }
+
+    @GetMapping("/list")
+    public List<AdminCountry> getAdminCountriesAsList() {
+        return adminCountryService.getAdminCountriesAsList();
     }
 
     @GetMapping("/{id}")
