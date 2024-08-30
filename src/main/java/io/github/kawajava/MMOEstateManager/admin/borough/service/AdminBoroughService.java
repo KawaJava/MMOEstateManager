@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminBorough;
 import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.AdminBoroughMapper.mapAdminHistoricalLeaders;
@@ -25,15 +26,23 @@ public class AdminBoroughService {
     public Page<AdminBorough> getAdminBoroughs(Pageable pageable) {
         return adminBoroughRepository.findAll(pageable);
     }
+
+    public List<AdminBorough> getAdminBoroughsAsList() {
+        return adminBoroughRepository.findAll();
+    }
+
     public AdminBorough getAdminBorough(Long id) {
         return adminBoroughRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Borough", id));
     }
+
     public AdminBorough createAdminBorough(AdminBorough adminBorough) {
         return adminBoroughRepository.save(adminBorough);
     }
+
     public AdminBorough updateAdminBoroughGeneralInfo(AdminBorough adminBorough) {
         return adminBoroughRepository.save(adminBorough);
     }
+
     @Transactional
     public AdminBorough changeLeader(Long boroughId, Long leaderId) {
         var adminBorough = adminBoroughRepository.findById(boroughId).orElseThrow(() -> new ResourceNotFoundException("Borough", boroughId));
@@ -45,4 +54,5 @@ public class AdminBoroughService {
         adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));
     }
+
 }

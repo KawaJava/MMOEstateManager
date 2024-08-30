@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static io.github.kawajava.MMOEstateManager.admin.utils.SlugifyUtils.slugifySlug;
 
@@ -24,6 +25,11 @@ public class AdminBoroughController {
     @GetMapping
     public Page<AdminBorough> getAdminBoroughs(Pageable pageable) {
         return adminBoroughService.getAdminBoroughs(pageable);
+    }
+
+    @GetMapping("/list")
+    public List<AdminBorough> getAdminBoroughsAsList() {
+        return adminBoroughService.getAdminBoroughsAsList();
     }
 
     @GetMapping("/{id}")
