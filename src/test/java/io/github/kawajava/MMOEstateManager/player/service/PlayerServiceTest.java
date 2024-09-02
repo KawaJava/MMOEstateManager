@@ -1,8 +1,8 @@
 package io.github.kawajava.MMOEstateManager.player.service;
 
-import io.github.kawajava.MMOEstateManager.admin.player.model.Clan;
+import io.github.kawajava.MMOEstateManager.common.model.Clan;
 import io.github.kawajava.MMOEstateManager.country.model.Country;
-import io.github.kawajava.MMOEstateManager.country.repository.CountryRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.CountryRepository;
 import io.github.kawajava.MMOEstateManager.player.model.Player;
 import io.github.kawajava.MMOEstateManager.player.repository.PlayerRepository;
 import io.github.kawajava.MMOEstateManager.player.service.dto.CountryDto;

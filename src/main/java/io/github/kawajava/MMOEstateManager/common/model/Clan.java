@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.player.model;
+package io.github.kawajava.MMOEstateManager.common.model;
 
 public enum Clan {
     Clan1,

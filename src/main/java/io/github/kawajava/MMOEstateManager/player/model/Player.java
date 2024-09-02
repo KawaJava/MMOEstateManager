@@ -1,6 +1,6 @@
 package io.github.kawajava.MMOEstateManager.player.model;
 
-import io.github.kawajava.MMOEstateManager.admin.player.model.Clan;
+import io.github.kawajava.MMOEstateManager.common.model.Clan;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

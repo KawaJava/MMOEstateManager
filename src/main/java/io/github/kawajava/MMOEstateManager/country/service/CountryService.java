@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.country.service;
 
 import io.github.kawajava.MMOEstateManager.country.model.Country;
-import io.github.kawajava.MMOEstateManager.country.repository.CountryRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

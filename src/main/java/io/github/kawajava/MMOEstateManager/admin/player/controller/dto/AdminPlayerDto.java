@@ -1,6 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.player.controller.dto;
 
-import io.github.kawajava.MMOEstateManager.admin.player.model.Clan;
+import io.github.kawajava.MMOEstateManager.common.model.Clan;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
