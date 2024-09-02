@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.player.service;
+package io.github.kawajava.MMOEstateManager.player.service.dto;
 
 import io.github.kawajava.MMOEstateManager.admin.player.model.Clan;
 import jakarta.persistence.EnumType;

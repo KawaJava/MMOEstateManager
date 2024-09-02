@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.player.controller;
 
 import io.github.kawajava.MMOEstateManager.player.model.Player;
-import io.github.kawajava.MMOEstateManager.player.service.PlayerDto;
+import io.github.kawajava.MMOEstateManager.player.service.dto.PlayerDto;
 import io.github.kawajava.MMOEstateManager.player.service.PlayerService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;

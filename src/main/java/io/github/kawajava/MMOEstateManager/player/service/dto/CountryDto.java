@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.player.service;
+package io.github.kawajava.MMOEstateManager.player.service.dto;
 
 import lombok.Builder;
 import lombok.Getter;
