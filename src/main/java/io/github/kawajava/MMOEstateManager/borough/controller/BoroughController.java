@@ -1,7 +1,7 @@
-package io.github.kawajava.MMOEstateManager.country.controller;
+package io.github.kawajava.MMOEstateManager.borough.controller;
 
-import io.github.kawajava.MMOEstateManager.country.model.Country;
-import io.github.kawajava.MMOEstateManager.country.service.CountryService;
+import io.github.kawajava.MMOEstateManager.borough.model.Borough;
+import io.github.kawajava.MMOEstateManager.borough.service.BoroughService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/countries")
+@RequestMapping("/boroughs")
 @Validated
-public class CountryController {
+public class BoroughController {
 
-    private final CountryService countryService;
+    private final BoroughService boroughService;
 
     @GetMapping
-    public Page<Country> getCountries(Pageable pageable) {
-        return countryService.getCountries(pageable);
+    public Page<Borough> getBoroughs(Pageable pageable) {
+        return boroughService.getBoroughs(pageable);
     }
 
     @GetMapping("/{slug}")
-    public Country getCountryBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
-                                  @Length(max = 255) String slug) {
-        return countryService.getCountryBySlug(slug);
+    public Borough getBoroughBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
+                                    @Length(max = 255) String slug) {
+        return boroughService.getBoroughBySlug(slug);
     }
 }
