@@ -20,4 +20,5 @@ public class PlayerDto {
     private LocalDate created;
     private String slug;
     private List<CountryDto> countryDtos;
+    private List<BoroughDto> boroughDtos;
 }

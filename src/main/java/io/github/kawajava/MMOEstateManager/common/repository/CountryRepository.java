@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface CountryRepository extends JpaRepository<Country, Long> {
     Optional<Country> findBySlug(String slug);
 
-    List<Country> findAllByActualSheriffId(Long playerId);
+    List<Country> findAllByActualSheriffId(Long actualSheriffId);
 }

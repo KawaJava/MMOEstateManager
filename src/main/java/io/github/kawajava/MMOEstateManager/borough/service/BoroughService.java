@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.borough.service;
 
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
-import io.github.kawajava.MMOEstateManager.borough.repository.BoroughRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.BoroughRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
