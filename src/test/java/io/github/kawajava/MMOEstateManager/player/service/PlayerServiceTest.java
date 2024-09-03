@@ -6,7 +6,7 @@ import io.github.kawajava.MMOEstateManager.common.repository.BoroughRepository;
 import io.github.kawajava.MMOEstateManager.country.model.Country;
 import io.github.kawajava.MMOEstateManager.common.repository.CountryRepository;
 import io.github.kawajava.MMOEstateManager.player.model.Player;
-import io.github.kawajava.MMOEstateManager.player.repository.PlayerRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.PlayerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

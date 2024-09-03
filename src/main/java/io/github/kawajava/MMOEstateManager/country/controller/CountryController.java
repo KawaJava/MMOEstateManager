@@ -1,6 +1,7 @@
 package io.github.kawajava.MMOEstateManager.country.controller;
 
 import io.github.kawajava.MMOEstateManager.country.model.Country;
+import io.github.kawajava.MMOEstateManager.country.model.CountryDetails;
 import io.github.kawajava.MMOEstateManager.country.service.CountryService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,11 @@ public class CountryController {
     public Country getCountryBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                   @Length(max = 255) String slug) {
         return countryService.getCountryBySlug(slug);
+    }
+
+    @GetMapping("/{slug}/details")
+    public CountryDetails getCountryDetails(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
+                                    @Length(max = 255) String slug) {
+        return countryService.getCountryDetails(slug);
     }
 }
