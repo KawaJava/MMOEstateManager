@@ -1,8 +1,10 @@
 package io.github.kawajava.MMOEstateManager.player.service;
 
 
+import io.github.kawajava.MMOEstateManager.borough.model.Borough;
 import io.github.kawajava.MMOEstateManager.common.repository.BoroughRepository;
 import io.github.kawajava.MMOEstateManager.common.repository.CountryRepository;
+import io.github.kawajava.MMOEstateManager.country.model.Country;
 import io.github.kawajava.MMOEstateManager.player.model.Player;
 import io.github.kawajava.MMOEstateManager.player.repository.PlayerRepository;
 import io.github.kawajava.MMOEstateManager.player.service.dto.BoroughDto;
@@ -14,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
@@ -23,16 +27,20 @@ public class PlayerService {
     private final BoroughRepository boroughRepository;
 
     public Page<Player> getPlayers(Pageable pageable) {
-        //return playerRepository.findAll(pageable);
         return playerRepository.findAllByIsActiveTrueOrderByName(pageable);
     }
 
     @Transactional(readOnly = true)
     public PlayerDto getPlayerBySlug(String slug) {
+
         var player = playerRepository.findBySlug(slug).orElseThrow();
         var countries = countryRepository.findAllByActualSheriffId(player.getId());
         var boroughs = boroughRepository.findAllByActualLeaderId(player.getId());
 
+        return buildPlayerDto(player, countries, boroughs);
+    }
+
+    private PlayerDto buildPlayerDto(Player player, List<Country> countries, List<Borough> boroughs) {
         return PlayerDto.builder()
                 .id(player.getId())
                 .name(player.getName())
@@ -40,24 +48,32 @@ public class PlayerService {
                 .slug(player.getSlug())
                 .clan(player.getClan())
                 .created(player.getCreated())
-                .countryDtos(countries.stream()
-                        .map(country -> CountryDto.builder()
-                                .id(country.getId())
-                                .name(country.getName())
-                                .slug(country.getSlug())
-                                .goldLimit(country.getGoldLimit())
-                                .sheriffStartDate(country.getSheriffStartDate())
-                                .build())
-                        .toList())
-                .boroughDtos(boroughs.stream()
-                        .map(borough -> BoroughDto.builder()
-                                .id(borough.getId())
-                                .name(borough.getName())
-                                .slug(borough.getSlug())
-                                .countryId(borough.getCountryId())
-                                .leaderStartDate(borough.getLeaderStartDate())
-                                .build())
-                        .toList())
+                .countryDtos(mapCountriesToDtos(countries))
+                .boroughDtos(mapBoroughsToDtos(boroughs))
                 .build();
+    }
+
+    private List<BoroughDto> mapBoroughsToDtos(List<Borough> boroughs) {
+        return boroughs.stream()
+                .map(borough -> BoroughDto.builder()
+                        .id(borough.getId())
+                        .name(borough.getName())
+                        .slug(borough.getSlug())
+                        .countryId(borough.getCountryId())
+                        .leaderStartDate(borough.getLeaderStartDate())
+                        .build())
+                .toList();
+    }
+
+    private List<CountryDto> mapCountriesToDtos(List<Country> countries) {
+        return countries.stream()
+                .map(country -> CountryDto.builder()
+                        .id(country.getId())
+                        .name(country.getName())
+                        .slug(country.getSlug())
+                        .goldLimit(country.getGoldLimit())
+                        .sheriffStartDate(country.getSheriffStartDate())
+                        .build())
+                .toList();
     }
 }
