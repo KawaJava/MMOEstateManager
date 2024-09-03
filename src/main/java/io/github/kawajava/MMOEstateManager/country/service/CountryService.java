@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,12 +42,12 @@ public class CountryService {
 
         var country = countryRepository.findBySlug(slug).orElseThrow();
         List<Borough> countryBoroughs = getCountryBoroughs(country.getId());
-
         List<Long> leadersIds = countryBoroughs.stream()
                 .map(Borough::getActualLeaderId)
                 .toList();
-
         List<Player> players = playerRepository.selectAllByIdIn(leadersIds);
+
+
         List<PlayerInfo> playerInfoList = players.stream()
                 .map(player -> PlayerInfo.builder()
                         .id(player.getId())
@@ -82,6 +84,12 @@ public class CountryService {
                                 Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)
                         )
                 ));
+        Map<String, BigDecimal> playerPercentageMap =
+                calculatePlayerPercentage(countryBoroughs, playerMap, allGoldInCountry);
+        Map<Clan, BigDecimal> clanPercentageMap = calculateClanPercentage(
+                countryBoroughs, playerMap, allGoldInCountry);
+
+
 
         return CountryDetails.builder()
                 .id(country.getId())
@@ -96,6 +104,8 @@ public class CountryService {
                 .goldToCollect(goldToCollect)
                 .goldByPlayers(getGoldByPlayers)
                 .goldByClan(getGoldByClan)
+                .playerPercentage(playerPercentageMap)
+                .clanPercentage(clanPercentageMap)
                 .build();
 
     }
@@ -105,4 +115,38 @@ public class CountryService {
                 .filter(borough -> Objects.equals(borough.getCountryId(), countryId))
                 .toList();
     }
+
+    Map<String, BigDecimal> calculatePlayerPercentage(List<Borough> countryBoroughs, Map<Long, PlayerInfo> playerMap, BigDecimal allGoldInCountry) {
+        Map<String, BigDecimal> playerPercentageMap = new HashMap<>();
+
+        countryBoroughs.stream()
+                .collect(Collectors.groupingBy(Borough::getActualLeaderId, Collectors.mapping(Borough::getActualGold, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))))
+                .forEach((leaderId, totalGoldByPlayer) -> {
+                    PlayerInfo playerInfo = playerMap.get(leaderId);
+                    BigDecimal percentage = totalGoldByPlayer
+                            .divide(allGoldInCountry, 4, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
+                    playerPercentageMap.put(playerInfo.getName(), percentage);
+                });
+
+        return playerPercentageMap;
+    }
+
+    Map<Clan, BigDecimal> calculateClanPercentage(List<Borough> countryBoroughs, Map<Long, PlayerInfo> playerMap, BigDecimal allGoldInCountry) {
+        Map<Clan, BigDecimal> clanPercentageMap = new HashMap<>();
+
+        countryBoroughs.stream()
+                .collect(Collectors.groupingBy(
+                        borough -> playerMap.get(borough.getActualLeaderId()).getClan(),
+                        Collectors.mapping(Borough::getActualGold, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))
+                ))
+                .forEach((clan, totalGoldByClan) -> {
+                    BigDecimal percentage = totalGoldByClan.divide(allGoldInCountry, 4, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
+                    clanPercentageMap.put(clan, percentage);
+                });
+
+        return clanPercentageMap;
+    }
+
+
+
 }

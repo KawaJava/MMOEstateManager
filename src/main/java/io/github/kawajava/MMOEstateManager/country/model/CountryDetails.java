@@ -25,4 +25,6 @@ public class CountryDetails {
     private BigDecimal goldToCollect;
     private Map<String, BigDecimal> goldByPlayers;
     private Map<Clan, BigDecimal> goldByClan;
+    private Map<String, BigDecimal> playerPercentage;
+    private Map<Clan, BigDecimal> clanPercentage;
 }
