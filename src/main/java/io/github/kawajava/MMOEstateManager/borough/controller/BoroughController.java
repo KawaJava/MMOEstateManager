@@ -1,17 +1,16 @@
 package io.github.kawajava.MMOEstateManager.borough.controller;
 
+import io.github.kawajava.MMOEstateManager.borough.controller.dto.GoldDto;
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
 import io.github.kawajava.MMOEstateManager.borough.service.BoroughService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +29,12 @@ public class BoroughController {
     public Borough getBoroughBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                     @Length(max = 255) String slug) {
         return boroughService.getBoroughBySlug(slug);
+    }
+
+    @PatchMapping("/{slug}/update-gold")
+    public Borough updateGoldInBorough(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
+                                           @Length(max = 255) String slug,
+                                       @RequestBody @Valid GoldDto goldDto) {
+        return boroughService.updateGoldInBorough(slug, goldDto);
     }
 }

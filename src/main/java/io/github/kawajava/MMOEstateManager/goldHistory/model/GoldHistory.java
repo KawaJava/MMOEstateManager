@@ -1,6 +1,5 @@
 package io.github.kawajava.MMOEstateManager.goldHistory.model;
 
-import io.github.kawajava.MMOEstateManager.player.model.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +20,7 @@ public class GoldHistory {
     private Long id;
     private Long boroughId;
     private BigDecimal gold;
-    @ManyToOne
-    @JoinColumn(name = "goldAddedBy")
-    private Player goldAddedBy;
+    private Long goldAddedBy;
     private LocalDateTime dateAdded;
     private Boolean emailSend;
 }
