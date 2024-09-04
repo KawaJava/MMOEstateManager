@@ -1,6 +1,5 @@
 package io.github.kawajava.MMOEstateManager.historicalSheriffs.controller;
 
-import io.github.kawajava.MMOEstateManager.country.model.Country;
 import io.github.kawajava.MMOEstateManager.historicalSheriffs.model.HistoricalSheriffs;
 import io.github.kawajava.MMOEstateManager.historicalSheriffs.service.HistoricalSheriffsService;
 import jakarta.validation.constraints.Pattern;

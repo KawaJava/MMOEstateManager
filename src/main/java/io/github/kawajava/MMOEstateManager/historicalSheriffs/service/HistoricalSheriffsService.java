@@ -17,9 +17,9 @@ public class HistoricalSheriffsService {
     private final CountryService countryService;
 
     public List<HistoricalSheriffs> getHistoricalSheriffsBySlug(String slug) {
-        Country countryBySlug = countryService.getCountryBySlug(slug);
+        Country country = countryService.getCountryBySlug(slug);
         return historicalSheriffsRepository.findAll().stream()
-                .filter(historicalSheriffs -> historicalSheriffs.getCountryId().equals(countryBySlug.getId()))
+                .filter(historicalSheriff -> historicalSheriff.getCountryId().equals(country.getId()))
                 .toList();
     }
 }
