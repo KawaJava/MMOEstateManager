@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.historicalLeaders.service;
 
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
-import io.github.kawajava.MMOEstateManager.borough.service.BoroughService;
+import io.github.kawajava.MMOEstateManager.common.service.BoroughService;
 import io.github.kawajava.MMOEstateManager.historicalLeaders.model.HistoricalLeaders;
 import io.github.kawajava.MMOEstateManager.historicalLeaders.repository.HistoricalLeadersRepository;
 import lombok.RequiredArgsConstructor;

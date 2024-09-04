@@ -2,7 +2,7 @@ package io.github.kawajava.MMOEstateManager.borough.controller;
 
 import io.github.kawajava.MMOEstateManager.borough.controller.dto.GoldDto;
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
-import io.github.kawajava.MMOEstateManager.borough.service.BoroughService;
+import io.github.kawajava.MMOEstateManager.common.service.BoroughService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;

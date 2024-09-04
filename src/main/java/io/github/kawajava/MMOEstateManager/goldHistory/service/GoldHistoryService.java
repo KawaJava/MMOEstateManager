@@ -1,9 +1,9 @@
 package io.github.kawajava.MMOEstateManager.goldHistory.service;
 
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
-import io.github.kawajava.MMOEstateManager.borough.service.BoroughService;
+import io.github.kawajava.MMOEstateManager.common.service.BoroughService;
 import io.github.kawajava.MMOEstateManager.goldHistory.model.GoldHistory;
-import io.github.kawajava.MMOEstateManager.goldHistory.repository.GoldHistoryRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.GoldHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

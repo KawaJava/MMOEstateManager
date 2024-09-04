@@ -1,10 +1,10 @@
-package io.github.kawajava.MMOEstateManager.borough.service;
+package io.github.kawajava.MMOEstateManager.common.service;
 
 import io.github.kawajava.MMOEstateManager.borough.controller.dto.GoldDto;
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
 import io.github.kawajava.MMOEstateManager.common.repository.BoroughRepository;
 import io.github.kawajava.MMOEstateManager.goldHistory.model.GoldHistory;
-import io.github.kawajava.MMOEstateManager.goldHistory.repository.GoldHistoryRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.GoldHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,14 +32,14 @@ public class BoroughService {
     public Borough updateGoldInBorough(String slug, GoldDto goldDto) {
 
         var borough = boroughRepository.findBySlug(slug).orElseThrow();
-        var goldHistory = getGoldHistory(borough);
+        var goldHistory = updateGoldHistory(borough);
         goldHistoryRepository.save(goldHistory);
-        var updatedBorough = getUpdatedBorough(goldDto, borough);
+        var updatedBorough = updateBorough(goldDto, borough);
         boroughRepository.save(updatedBorough);
         return updatedBorough;
     }
 
-    private GoldHistory getGoldHistory(Borough borough) {
+    private GoldHistory updateGoldHistory(Borough borough) {
         return GoldHistory.builder()
                 .id(null)
                 .boroughId(borough.getId())
@@ -50,7 +50,7 @@ public class BoroughService {
                 .build();
     }
 
-    private Borough getUpdatedBorough(GoldDto goldDto, Borough borough) {
+    private Borough updateBorough(GoldDto goldDto, Borough borough) {
         return Borough.builder()
                 .id(borough.getId())
                 .name(borough.getName())
