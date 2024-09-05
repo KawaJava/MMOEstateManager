@@ -82,7 +82,6 @@ class CountryDetailsGoldCalculatorTest {
     @Test
     void shouldGetGoldByClanCorrectly() {
         List<Borough> testBoroughs = createTestBoroughs();
-
         Map<Clan, BigDecimal> goldByClan = goldCalculator.getGoldByClan(testBoroughs, createPlayerInfoTestMap());
 
         assertThat(goldByClan).isNotNull();
@@ -90,33 +89,37 @@ class CountryDetailsGoldCalculatorTest {
         assertThat(goldByClan.get(Clan.Clan1)).isEqualTo(BigDecimal.valueOf(15000));
         assertThat(goldByClan.get(Clan.Clan2)).isEqualTo(BigDecimal.valueOf(100000));
     }
-//
-//    @Test
-//    void shouldCalculatePlayerPercentageCorrectly() {
-//        List<Borough> testBoroughs = createTestBoroughs();
-//        var allGoldInCountry = BigDecimal.valueOf(110000);
-//
-//        Map<String, BigDecimal> playerPercentageMap = goldCalculator.calculatePlayerPercentage(testBoroughs, createPlayerInfoTestMap(), allGoldInCountry);
-//
-//        assertThat(playerPercentageMap).isNotNull();
-//        assertThat(playerPercentageMap.size()).isEqualTo(3);
-//        assertThat(playerPercentageMap.get("Player1")).isEqualTo(new BigDecimal("13.6400"));
-//        assertThat(playerPercentageMap.get("Player2")).isEqualTo(new BigDecimal("68.1800"));
-//        assertThat(playerPercentageMap.get("Player3")).isEqualTo(new BigDecimal("22.7300"));
-//    }
-//
-//    @Test
-//    void shouldCalculateClanPercentageCorrectly() {
-//        List<Borough> testBoroughs = createTestBoroughs();
-//        var allGoldInCountry = BigDecimal.valueOf(110000);
-//
-//        Map<Clan, BigDecimal> clanPercentageMap = goldCalculator.calculateClanPercentage(testBoroughs, createPlayerInfoTestMap(), allGoldInCountry);
-//
-//        assertThat(clanPercentageMap).isNotNull();
-//        assertThat(clanPercentageMap.size()).isEqualTo(2);
-//        assertThat(clanPercentageMap.get(Clan.Clan1)).isEqualTo(new BigDecimal("13.6400"));
-//        assertThat(clanPercentageMap.get(Clan.Clan2)).isEqualTo(new BigDecimal("90.9100"));
-//    }
+
+    @Test
+    void shouldCalculatePlayerPercentageCorrectly() {
+        List<Borough> testBoroughs = createTestBoroughs();
+        var allGoldInCountry = BigDecimal.valueOf(115000);
+
+        Map<String, BigDecimal> playerPercentageMap = goldCalculator.calculatePlayerPercentage(testBoroughs, createPlayerInfoTestMap(), allGoldInCountry);
+        BigDecimal totalPercentage = playerPercentageMap.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        assertThat(playerPercentageMap).isNotNull();
+        assertThat(playerPercentageMap.size()).isEqualTo(3);
+        assertThat(playerPercentageMap.get("Player1")).isEqualTo(new BigDecimal("13.0400"));
+        assertThat(playerPercentageMap.get("Player2")).isEqualTo(new BigDecimal("65.2200"));
+        assertThat(playerPercentageMap.get("Player3")).isEqualTo(new BigDecimal("21.7400"));
+        assertThat(totalPercentage.compareTo(BigDecimal.valueOf(100.0))).isEqualTo(0);
+    }
+
+    @Test
+    void shouldCalculateClanPercentageCorrectly() {
+        List<Borough> testBoroughs = createTestBoroughs();
+        var allGoldInCountry = BigDecimal.valueOf(115000);
+
+        Map<Clan, BigDecimal> clanPercentageMap = goldCalculator.calculateClanPercentage(testBoroughs, createPlayerInfoTestMap(), allGoldInCountry);
+        BigDecimal totalPercentage = clanPercentageMap.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        assertThat(clanPercentageMap).isNotNull();
+        assertThat(clanPercentageMap.size()).isEqualTo(2);
+        assertThat(clanPercentageMap.get(Clan.Clan1)).isEqualTo(new BigDecimal("13.0400"));
+        assertThat(clanPercentageMap.get(Clan.Clan2)).isEqualTo(new BigDecimal("86.9600"));
+        assertThat(totalPercentage.compareTo(BigDecimal.valueOf(100.0))).isEqualTo(0);
+    }
 
     Map<Long, PlayerInfo> createPlayerInfoTestMap() {
         var player1 = PlayerInfo.builder()
