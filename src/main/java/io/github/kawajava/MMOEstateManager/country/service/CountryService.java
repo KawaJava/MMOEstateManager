@@ -43,21 +43,15 @@ public class CountryService {
 
         var country = countryRepository.findBySlug(slug).orElseThrow();
         List<Borough> countryBoroughs = getCountryBoroughs(country.getId());
-        List<Long> leadersIds = countryBoroughs.stream()
-                .map(Borough::getActualLeaderId)
-                .toList();
+        List<Long> leadersIds = getLeadersIds(countryBoroughs);
 
         List<Player> players = playerRepository.selectAllByIdIn(leadersIds);
-
-        List<PlayerInfo> playerInfoList = players.stream()
-                .map(this::mapToPlayerInfo)
-                .toList();
+        List<PlayerInfo> playerInfoList = getPlayerInfoList(players);
 
         var allGoldInCountry = goldCalculator.getAllGoldInCountry(countryBoroughs);
         var goldToCollect = goldCalculator.getGoldToCollect(countryBoroughs, country);
 
-        Map<Long, PlayerInfo> playerMap = playerInfoList.stream()
-                .collect(Collectors.toMap(PlayerInfo::getId, player -> player));
+        Map<Long, PlayerInfo> playerMap = playerInfoList.stream().collect(Collectors.toMap(PlayerInfo::getId, player -> player));
 
         Map<String, BigDecimal> getGoldByPlayers = goldCalculator.getGoldByPlayers(countryBoroughs, playerMap);
         Map<Clan, BigDecimal> getGoldByClan = goldCalculator.getGoldByClan(countryBoroughs, playerMap);
@@ -82,6 +76,18 @@ public class CountryService {
                 .clanPercentage(clanPercentageMap)
                 .build();
 
+    }
+
+    private List<PlayerInfo> getPlayerInfoList(List<Player> players) {
+        return players.stream()
+                .map(this::mapToPlayerInfo)
+                .toList();
+    }
+
+    private List<Long> getLeadersIds(List<Borough> countryBoroughs) {
+        return countryBoroughs.stream()
+                .map(Borough::getActualLeaderId)
+                .toList();
     }
 
     private List<Borough> getCountryBoroughs(Long countryId) {

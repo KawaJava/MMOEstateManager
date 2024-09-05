@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static io.github.kawajava.MMOEstateManager.borough.service.mapper.BoroughEmailMessageCreator.createEmailMessage;
+import static io.github.kawajava.MMOEstateManager.borough.service.mapper.BoroughMapper.getBoroughsIds;
+import static io.github.kawajava.MMOEstateManager.borough.service.mapper.BoroughMapper.getPlayersIds;
+
 @Service
 @RequiredArgsConstructor
 public class BoroughEmailService {
@@ -31,18 +35,12 @@ public class BoroughEmailService {
         List<Borough> boroughs = boroughRepository.findByEmailSendFalseAndDateAddedLessThan
                 (LocalDateTime.now().minusDays(daysToUpdateGold));
 
-        List<Long> playersIds = boroughs.stream()
-                .map(Borough::getActualLeaderId)
-                .distinct()
-                .toList();
+        List<Long> playersIds = getPlayersIds(boroughs);
         List<Player> players = playerRepository.selectAllByIdIn(playersIds);
 
-        players.stream().forEach(this::sendEmail);
+        players.forEach(this::sendEmail);
 
-        List<Long> boroughsIds = boroughs.stream()
-                .map(Borough::getId)
-                .distinct()
-                .toList();
+        List<Long> boroughsIds = getBoroughsIds(boroughs);
         boroughRepository.updateEmailSend(boroughsIds);
     }
 
@@ -51,15 +49,4 @@ public class BoroughEmailService {
                 "Prośba o aktualizacje stanu złota w gminie", createEmailMessage(player));
     }
 
-    private String createEmailMessage(Player player) {
-        return "\nDzień dobry," +
-                "\n" +
-                "\n" + "Szanowny " + player.getName() +
-                "\nProsimy o uaktualnienie ilości złota w gminach." +
-                "\n" +
-                "\nDziękujemy za przeczytanie wiadomości." +
-                "\n" +
-                "\nPozdrawiamy" +
-                "\nAdmini MMOEstateManager";
-    }
 }
