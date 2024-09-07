@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +35,7 @@ public class BoroughController {
     }
 
     @PatchMapping("/{slug}/update-gold")
+    @CacheEvict(value = "boroughs", allEntries = true)
     public Borough updateGoldInBorough(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                            @Length(max = 255) String slug,
                                        @RequestBody @Valid GoldDto goldDto) {
