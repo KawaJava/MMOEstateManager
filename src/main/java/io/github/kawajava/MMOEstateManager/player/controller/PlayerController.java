@@ -6,6 +6,7 @@ import io.github.kawajava.MMOEstateManager.player.service.PlayerService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +24,7 @@ public class PlayerController {
     private final PlayerService playerService;
 
     @GetMapping
+    @Cacheable("players")
     public Page<Player> getPlayers(Pageable pageable) {
         return playerService.getPlayers(pageable);
     }

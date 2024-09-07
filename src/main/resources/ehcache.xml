@@ -1,0 +1,14 @@
+<config xmlns="http://www.ehcache.org/v3">
+
+
+    <cache-template name="default">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache-template>
+
+    <cache alias="players" uses-template="default"/>
+    <cache alias="boroughs" uses-template="default"/>
+    <cache alias="countries" uses-template="default"/>
+</config>

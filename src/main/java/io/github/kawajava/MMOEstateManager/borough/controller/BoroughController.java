@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,7 @@ public class BoroughController {
     private final BoroughService boroughService;
 
     @GetMapping
+    @Cacheable("boroughs")
     public Page<Borough> getBoroughs(Pageable pageable) {
         return boroughService.getBoroughs(pageable);
     }
