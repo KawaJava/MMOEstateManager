@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class AdminCountryController {
     }
 
     @GetMapping("/list")
+    @Cacheable("countriesList")
     public List<AdminCountry> getAdminCountriesAsList() {
         return adminCountryService.getAdminCountriesAsList();
     }
@@ -42,13 +44,13 @@ public class AdminCountryController {
     }
 
     @PostMapping
-    @CacheEvict(value = "countries", allEntries = true)
+    @CacheEvict(value = {"countries", "countriesList"}, allEntries = true)
     public AdminCountry createAdminCountry(@RequestBody @Valid AdminCountryDto adminCountryDto) {
         return adminCountryService.createAdminCountry(mapAdminCountryDto(adminCountryDto, defaultGoldLimit));
     }
 
     @PatchMapping("/{id}")
-    @CacheEvict(value = "countries", allEntries = true)
+    @CacheEvict(value = {"countries", "countriesList"}, allEntries = true)
     public AdminCountry updateAdminCountryGeneralInfo(@PathVariable Long id,
             @RequestBody @Valid AdminCountryGeneralInfoDto adminCountryGeneralInfoDto) {
         return adminCountryService.updateAdminCountryGeneralInfo(
@@ -56,7 +58,8 @@ public class AdminCountryController {
     }
 
     @PatchMapping("/{countryId}/changeSheriff/{sheriffId}")
-    @CacheEvict(value = "countries", allEntries = true)
+
+    @CacheEvict(value = {"countries", "countriesList"}, allEntries = true)
     public AdminCountry changeSheriff(@PathVariable Long countryId, @PathVariable Long sheriffId) {
         return adminCountryService.changeSheriff(countryId, sheriffId);
     }

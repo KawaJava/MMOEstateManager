@@ -6,6 +6,7 @@ import io.github.kawajava.MMOEstateManager.admin.player.service.AdminPlayerServi
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class AdminPlayerController {
     }
 
     @GetMapping("/list")
+    @Cacheable("playersList")
     public List<AdminPlayer> getAdminPlayersAsList() {
         return adminPlayerService.getAdminPlayersAsList();
     }
@@ -44,26 +46,26 @@ public class AdminPlayerController {
     }
 
     @PostMapping
-    @CacheEvict(value = "players", allEntries = true)
+    @CacheEvict(value = {"players", "playersList"}, allEntries = true)
     public AdminPlayer createAdminPlayer(@RequestBody @Valid AdminPlayerDto adminPlayerDto) {
         return adminPlayerService.createAdminPlayer(mapAdminPlayer(adminPlayerDto, EMPTY_ID));
     }
 
     @PutMapping("/{id}")
-    @CacheEvict(value = "players", allEntries = true)
+    @CacheEvict(value = {"players", "playersList"}, allEntries = true)
     public AdminPlayer updateAdminPlayer(@RequestBody @Valid AdminPlayerDto adminPlayerDto,
                                          @PathVariable Long id) {
         return adminPlayerService.updateAdminPlayer(mapAdminPlayer(adminPlayerDto, id));
     }
 
     @DeleteMapping("/{id}/deactivate")
-    @CacheEvict(value = "players", allEntries = true)
+    @CacheEvict(value = {"players", "playersList"}, allEntries = true)
     public void deactivateAdminPlayer(@PathVariable Long id){
         adminPlayerService.deactivateAdminPlayer(id);
     }
 
     @DeleteMapping("/{id}")
-    @CacheEvict(value = "players", allEntries = true)
+    @CacheEvict(value = {"players", "playersList"}, allEntries = true)
     public void deleteAdminPlayer(@PathVariable Long id){
         adminPlayerService.deleteAdminPlayer(id);
     }

@@ -10,4 +10,7 @@
     <cache alias="players" uses-template="default"/>
     <cache alias="boroughs" uses-template="default"/>
     <cache alias="countries" uses-template="default"/>
+    <cache alias="playersList" uses-template="default"/>
+    <cache alias="boroughsList" uses-template="default"/>
+    <cache alias="countriesList" uses-template="default"/>
 </config>

@@ -35,7 +35,7 @@ public class BoroughController {
     }
 
     @PatchMapping("/{slug}/update-gold")
-    @CacheEvict(value = "boroughs", allEntries = true)
+    @CacheEvict(value = {"boroughs", "boroughsList"}, allEntries = true)
     public Borough updateGoldInBorough(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                            @Length(max = 255) String slug,
                                        @RequestBody @Valid GoldDto goldDto) {

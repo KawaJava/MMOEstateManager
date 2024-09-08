@@ -7,6 +7,7 @@ import io.github.kawajava.MMOEstateManager.admin.borough.service.AdminBoroughSer
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class AdminBoroughController {
     }
 
     @GetMapping("/list")
+    @Cacheable("boroughsList")
     public List<AdminBorough> getAdminBoroughsAsList() {
         return adminBoroughService.getAdminBoroughsAsList();
     }
@@ -39,13 +41,13 @@ public class AdminBoroughController {
     }
 
     @PostMapping
-    @CacheEvict(value = "boroughs", allEntries = true)
+    @CacheEvict(value = {"boroughs", "boroughsList"}, allEntries = true)
     public AdminBorough createAdminBorough(@RequestBody @Valid AdminBoroughDto adminBoroughDto) {
         return adminBoroughService.createAdminBorough(mapAdminBorough(adminBoroughDto));
     }
 
     @PatchMapping("/{id}")
-    @CacheEvict(value = "boroughs", allEntries = true)
+    @CacheEvict(value = {"boroughs", "boroughsList"}, allEntries = true)
     public AdminBorough updateAdminBoroughGeneralInfo(@PathVariable Long id,
                                                       @RequestBody @Valid AdminBoroughGeneralInfoDto adminBoroughGeneralInfo ) {
         return adminBoroughService.updateAdminBoroughGeneralInfo(
@@ -53,7 +55,7 @@ public class AdminBoroughController {
     }
 
     @PatchMapping("/{boroughId}/changeLeader/{leaderId}")
-    @CacheEvict(value = "boroughs", allEntries = true)
+    @CacheEvict(value = {"boroughs", "boroughsList"}, allEntries = true)
     public AdminBorough changeLeader(@PathVariable Long boroughId, @PathVariable Long leaderId) {
         return adminBoroughService.changeLeader(boroughId, leaderId);
     }
