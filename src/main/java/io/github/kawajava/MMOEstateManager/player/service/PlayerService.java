@@ -30,6 +30,10 @@ public class PlayerService {
         return playerRepository.findAllByIsActiveTrueOrderByName(pageable);
     }
 
+    public Player getPlayer(Long id) {
+        return playerRepository.findById(id).orElse(null);
+    }
+
     @Transactional(readOnly = true)
     public PlayerDto getPlayerBySlug(String slug) {
 

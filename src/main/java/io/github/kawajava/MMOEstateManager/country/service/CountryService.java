@@ -38,6 +38,12 @@ public class CountryService {
         return countryRepository.findBySlug(slug).orElseThrow();
     }
 
+    public List<Country> getCountriesByPlayerId(Long playerId) {
+        return countryRepository.findAll().stream()
+                .filter(country -> country.getActualSheriffId().equals(playerId))
+                .toList();
+    }
+
     @Transactional(readOnly = true)
     public CountryDetails getCountryDetails(String slug) {
 
