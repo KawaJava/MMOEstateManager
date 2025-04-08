@@ -1,6 +1,6 @@
 # MMOEstateManager
 
-📌 **English version is available below the Polish version. Scroll down to read it.**
+📌 **English version is available below the Polish version. Scroll down to read it. You can also use the table of contents below to quickly jump to it.**
 
 ### 📄 **Spis treści (Polska wersja)**
 
@@ -10,7 +10,7 @@
 - [Instalacja](#instalacja)  
   - [1. Klonowanie repozytorium](#1-klonowanie-repozytorium)  
   - [2. Konfiguracja bazy danych](#2-konfiguracja-bazy-danych)  
-  - [3. Uzupełnij plik applicationproperties](#3-uzupełnij-plik-applicationproperties)  
+  - [3. Uzupełnianie plik application.properties](#3-uzupełnij-plik-applicationproperties)  
 - [Uruchamianie aplikacji](#uruchamianie-aplikacji)  
 - [Uruchamianie testów](#uruchamianie-testów)  
 - [Uwagi końcowe](#uwagi-końcowe)
@@ -25,7 +25,7 @@
 - [Installation](#installation)  
   - [1. Clone the repository](#1-clone-the-repository)  
   - [2. Database Configuration](#2-database-configuration)  
-  - [3. Fill in the applicationproperties file](#3-fill-in-the-applicationproperties-file)  
+  - [3. Fill in the application.properties file](#3-fill-in-the-applicationproperties-file)  
 - [Running the Application](#running-the-application)  
 - [Running Tests](#running-tests)  
 - [Final Notes](#final-notes)
