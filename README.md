@@ -2,14 +2,34 @@
 
 📌 **English version is available below the Polish version. Scroll down to read it.**
 
-## Spis treści / Table of Contents
-- [Opis / Description](#opis)
-- [Technologie / Technologies](#technologie)
-- [Wymagania / Requirements](#wymagania)
-- [Instalacja / Installation](#instalacja)
-- [Uruchamianie / Running](#uruchamianie-aplikacji)
-- [Testy / Tests](#uruchamianie-testów)
-- [Uwagi końcowe / Final Notes](#uwagi-końcowe)
+### 📄 **Spis treści (Polska wersja)**
+
+- [Opis](#opis)  
+- [Technologie](#technologie)  
+- [Wymagania](#wymagania)  
+- [Instalacja](#instalacja)  
+  - [1. Klonowanie repozytorium](#1-klonowanie-repozytorium)  
+  - [2. Konfiguracja bazy danych](#2-konfiguracja-bazy-danych)  
+  - [3. Uzupełnij plik applicationproperties](#3-uzupełnij-plik-applicationproperties)  
+- [Uruchamianie aplikacji](#uruchamianie-aplikacji)  
+- [Uruchamianie testów](#uruchamianie-testów)  
+- [Uwagi końcowe](#uwagi-końcowe)
+
+---
+
+### 📄 **Table of Contents (English version)**
+
+- [Description](#description)  
+- [Technologies](#technologies)  
+- [Requirements](#requirements)  
+- [Installation](#installation)  
+  - [1. Clone the repository](#1-clone-the-repository)  
+  - [2. Database Configuration](#2-database-configuration)  
+  - [3. Fill in the applicationproperties file](#3-fill-in-the-applicationproperties-file)  
+- [Running the Application](#running-the-application)  
+- [Running Tests](#running-tests)  
+- [Final Notes](#final-notes)
+
 
 
 ## Opis
