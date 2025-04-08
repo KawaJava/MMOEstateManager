@@ -10,7 +10,7 @@
 - [Instalacja](#instalacja)  
   - [1. Klonowanie repozytorium](#1-klonowanie-repozytorium)  
   - [2. Konfiguracja bazy danych](#2-konfiguracja-bazy-danych)  
-  - [3. Uzupełnianie plik application.properties](#3-uzupełnij-plik-applicationproperties)  
+  - [3. Uzupełnianie pliku application.properties](#3-uzupełnij-plik-applicationproperties)  
 - [Uruchamianie aplikacji](#uruchamianie-aplikacji)  
 - [Uruchamianie testów](#uruchamianie-testów)  
 - [Uwagi końcowe](#uwagi-końcowe)
@@ -140,7 +140,7 @@ Aplikacja implementuje dostęp oparty o role, dzięki czemu każdy użytkownik �
 W razie pytań lub problemów zachęcam do otworzenia zgłoszenia (issue) w repozytorium.
 
 
-# 🇬🇧 English version
+## 🇬🇧 English version
 
 ## Description
 An application designed to help MMO players manage their estates and monitor their gold balance. The app enables faster and easier access to data about gold and sheriffs/mayors in a given estate, as well as an overview of historical data, which allows tracking of changes and identifying cases where, for example, the amount of gold exceeded the set limit. Players who fail to update gold data in their regions can automatically receive an email reminder without the need for manually sending such a notification.
