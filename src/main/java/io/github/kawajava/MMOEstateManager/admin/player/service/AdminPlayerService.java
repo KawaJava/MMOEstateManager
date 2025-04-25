@@ -1,6 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.player.service;
 
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
+import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.repository.AdminPlayerRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,4 +53,15 @@ public class AdminPlayerService {
         adminPlayerRepository.deleteById(id);
     }
 
+    public List<AdminPlayerToAutocomplete> getAdminPlayersToAutocomplete(String beginning) {
+        return adminPlayerRepository.findAll().stream()
+                .filter(adminPlayer -> adminPlayer.getName().startsWith(beginning))
+                .limit(5)
+                .map(this::mapToAdminPlayerToAutocomplete)
+                .toList();
+    }
+
+    private AdminPlayerToAutocomplete mapToAdminPlayerToAutocomplete(AdminPlayer adminPlayer) {
+        return new AdminPlayerToAutocomplete(adminPlayer.getId(), adminPlayer.getName());
+    }
 }

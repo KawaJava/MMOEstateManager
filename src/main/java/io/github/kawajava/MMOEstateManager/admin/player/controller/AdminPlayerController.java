@@ -1,6 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.player.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerDto;
+import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.service.AdminPlayerService;
 import jakarta.validation.Valid;
@@ -43,6 +44,11 @@ public class AdminPlayerController {
     @GetMapping("/{id}")
     public AdminPlayer getAdminPlayer(@PathVariable Long id) {
         return adminPlayerService.getAdminPlayer(id);
+    }
+
+    @GetMapping("/toAutocomplete")
+    public List<AdminPlayerToAutocomplete> getAdminPlayersToAutoComplete(@RequestParam String beginning) {
+        return adminPlayerService.getAdminPlayersToAutocomplete(beginning);
     }
 
     @PostMapping
