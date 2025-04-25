@@ -2,8 +2,10 @@ package io.github.kawajava.MMOEstateManager.admin.borough.controller;
 
 import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughDto;
 import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughGeneralInfoDto;
+import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.borough.service.AdminBoroughService;
+import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerToAutocomplete;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -38,6 +40,11 @@ public class AdminBoroughController {
     @GetMapping("/{id}")
     public AdminBorough getAdminBorough(@PathVariable Long id) {
         return adminBoroughService.getAdminBorough(id);
+    }
+
+    @GetMapping("/toAutocomplete")
+    public List<AdminBoroughToAutocomplete> getAAdminBoroughsToAutoComplete(@RequestParam String beginning) {
+        return adminBoroughService.getAdminBoroughsToAutocomplete(beginning);
     }
 
     @PostMapping

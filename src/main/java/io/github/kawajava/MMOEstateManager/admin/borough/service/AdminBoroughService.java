@@ -1,5 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.borough.service;
 
+import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.borough.repository.AdminBoroughRepository;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
@@ -53,6 +54,20 @@ public class AdminBoroughService {
 
         adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));
+    }
+
+    public List<AdminBoroughToAutocomplete> getAdminBoroughsToAutocomplete(String beginning) {
+        return adminBoroughRepository.findTop5ByNameStartingWithIgnoreCase(beginning)
+                .stream()
+                .map(this::mapToAdminBoroughToAutocomplete)
+                .toList();
+    }
+    private AdminBoroughToAutocomplete mapToAdminBoroughToAutocomplete(AdminBorough adminBorough) {
+        return new AdminBoroughToAutocomplete(
+                adminBorough.getId(),
+                adminBorough.getName(),
+                adminBorough.getSlug()
+        );
     }
 
 }
