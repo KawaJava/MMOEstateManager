@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface AdminBoroughRepository extends JpaRepository<AdminBorough, Long> {
     List<AdminBorough> findTop5ByNameStartingWithIgnoreCase(String beginning);
+
+    List<AdminBorough> findAllByCountryId(Long countryId);
 }
