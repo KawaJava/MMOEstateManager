@@ -1,6 +1,9 @@
 package io.github.kawajava.MMOEstateManager.admin.country.service;
 
+import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughToAutocomplete;
+import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
+import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
 import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
@@ -55,4 +58,17 @@ public class AdminCountryService {
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
 
+    public List<AdminCountryToAutocomplete> getAdminCountriesToAutocomplete(String beginning) {
+        return adminCountryRepository.findTop5ByNameStartingWithIgnoreCase(beginning)
+                .stream()
+                .map(this::mapToAdminCountryToAutocomplete)
+                .toList();
+    }
+
+    private AdminCountryToAutocomplete mapToAdminCountryToAutocomplete(AdminCountry adminCountry) {
+        return new AdminCountryToAutocomplete(
+                adminCountry.getId(),
+                adminCountry.getName()
+        );
+    }
 }

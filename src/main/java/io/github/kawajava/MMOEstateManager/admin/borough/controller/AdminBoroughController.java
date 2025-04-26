@@ -43,7 +43,7 @@ public class AdminBoroughController {
     }
 
     @GetMapping("/toAutocomplete")
-    public List<AdminBoroughToAutocomplete> getAAdminBoroughsToAutoComplete(@RequestParam String beginning) {
+    public List<AdminBoroughToAutocomplete> getAdminBoroughsToAutoComplete(@RequestParam String beginning) {
         return adminBoroughService.getAdminBoroughsToAutocomplete(beginning);
     }
 

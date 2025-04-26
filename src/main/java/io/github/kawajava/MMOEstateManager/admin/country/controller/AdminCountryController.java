@@ -1,7 +1,9 @@
 package io.github.kawajava.MMOEstateManager.admin.country.controller;
 
+import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryDto;
 import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryGeneralInfoDto;
+import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.service.AdminCountryService;
 import jakarta.validation.Valid;
@@ -41,6 +43,11 @@ public class AdminCountryController {
     @GetMapping("/{id}")
     public AdminCountry getAdminCountry(@PathVariable Long id) {
         return adminCountryService.getAdminCountry(id);
+    }
+
+    @GetMapping("/toAutocomplete")
+    public List<AdminCountryToAutocomplete> getAdminCountriesToAutoComplete(@RequestParam String beginning) {
+        return adminCountryService.getAdminCountriesToAutocomplete(beginning);
     }
 
     @PostMapping
