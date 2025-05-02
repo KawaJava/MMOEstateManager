@@ -19,6 +19,7 @@ import java.util.List;
 public class AdminPlayerService {
 
     private final AdminPlayerRepository adminPlayerRepository;
+    private final AdminPlayerValidationService validationService;
 
     public Page<AdminPlayer> getAdminPlayers(Pageable pageable) {
         return adminPlayerRepository.findAll(pageable);
@@ -41,11 +42,12 @@ public class AdminPlayerService {
     }
 
     public AdminPlayer createAdminPlayer(AdminPlayer adminPlayer) {
-        validateUniqueConstraints(adminPlayer);
+        validationService.validateUniqueConstraints(adminPlayer);
         return adminPlayerRepository.save(adminPlayer);
     }
 
     public AdminPlayer updateAdminPlayer(AdminPlayer adminPlayer) {
+        validationService.validateUniqueConstraints(adminPlayer);
         return adminPlayerRepository.save(adminPlayer);
     }
 
@@ -67,23 +69,6 @@ public class AdminPlayerService {
 
     private AdminPlayerToAutocomplete mapToAdminPlayerToAutocomplete(AdminPlayer adminPlayer) {
         return new AdminPlayerToAutocomplete(adminPlayer.getId(), adminPlayer.getName());
-    }
-    private void validateUniqueConstraints(AdminPlayer playerToValidate) {
-        List<AdminPlayer> all = adminPlayerRepository.findAll();
-
-        all.stream()
-                .filter(p -> playerToValidate.getId() == null || !p.getId().equals(playerToValidate.getId()))
-                .forEach(p -> {
-                    if (p.getName().equalsIgnoreCase(playerToValidate.getName())) {
-                        throw new NameAlreadyExistsException(playerToValidate.getName());
-                    }
-                    if (p.getEmail().equalsIgnoreCase(playerToValidate.getEmail())) {
-                        throw new EmailAlreadyExistsException(playerToValidate.getEmail());
-                    }
-                    if (p.getSlug().equalsIgnoreCase(playerToValidate.getSlug())) {
-                        throw new SlugAlreadyExistsException(playerToValidate.getSlug());
-                    }
-                });
     }
 
 }
