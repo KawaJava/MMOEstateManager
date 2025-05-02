@@ -23,6 +23,7 @@ public class AdminBoroughService {
 
     private final AdminBoroughRepository adminBoroughRepository;
     private final AdminHistoricalLeadersService adminHistoricalLeadersService;
+    private final AdminBoroughValidationService validationService;
 
     public Page<AdminBorough> getAdminBoroughs(Pageable pageable) {
         return adminBoroughRepository.findAll(pageable);
@@ -37,10 +38,12 @@ public class AdminBoroughService {
     }
 
     public AdminBorough createAdminBorough(AdminBorough adminBorough) {
+        validationService.validateUniqueConstraints(adminBorough);
         return adminBoroughRepository.save(adminBorough);
     }
 
     public AdminBorough updateAdminBoroughGeneralInfo(AdminBorough adminBorough) {
+        validationService.validateUniqueConstraints(adminBorough);
         return adminBoroughRepository.save(adminBorough);
     }
 

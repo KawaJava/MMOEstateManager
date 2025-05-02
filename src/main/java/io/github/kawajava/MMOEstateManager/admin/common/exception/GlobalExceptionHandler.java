@@ -1,5 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.common.exception;
 
+import io.github.kawajava.MMOEstateManager.admin.common.exception.adminBorough.BoroughNameAlreadyExistsException;
+import io.github.kawajava.MMOEstateManager.admin.common.exception.adminBorough.BoroughSlugAlreadyExistsException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.EmailAlreadyExistsException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.NameAlreadyExistsException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.SlugAlreadyExistsException;
@@ -22,7 +24,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({
             NameAlreadyExistsException.class,
             EmailAlreadyExistsException.class,
-            SlugAlreadyExistsException.class
+            SlugAlreadyExistsException.class,
+            BoroughNameAlreadyExistsException.class,
+            BoroughSlugAlreadyExistsException.class
     })
     @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
