@@ -1,6 +1,9 @@
 package io.github.kawajava.MMOEstateManager.admin.player.service;
 
+import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.EmailAlreadyExistsException;
+import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.NameAlreadyExistsException;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
+import io.github.kawajava.MMOEstateManager.admin.common.exception.adminPlayer.SlugAlreadyExistsException;
 import io.github.kawajava.MMOEstateManager.admin.player.controller.dto.AdminPlayerToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import io.github.kawajava.MMOEstateManager.admin.player.repository.AdminPlayerRepository;
@@ -38,6 +41,7 @@ public class AdminPlayerService {
     }
 
     public AdminPlayer createAdminPlayer(AdminPlayer adminPlayer) {
+        validateUniqueConstraints(adminPlayer);
         return adminPlayerRepository.save(adminPlayer);
     }
 
@@ -64,4 +68,22 @@ public class AdminPlayerService {
     private AdminPlayerToAutocomplete mapToAdminPlayerToAutocomplete(AdminPlayer adminPlayer) {
         return new AdminPlayerToAutocomplete(adminPlayer.getId(), adminPlayer.getName());
     }
+    private void validateUniqueConstraints(AdminPlayer playerToValidate) {
+        List<AdminPlayer> all = adminPlayerRepository.findAll();
+
+        all.stream()
+                .filter(p -> playerToValidate.getId() == null || !p.getId().equals(playerToValidate.getId()))
+                .forEach(p -> {
+                    if (p.getName().equalsIgnoreCase(playerToValidate.getName())) {
+                        throw new NameAlreadyExistsException(playerToValidate.getName());
+                    }
+                    if (p.getEmail().equalsIgnoreCase(playerToValidate.getEmail())) {
+                        throw new EmailAlreadyExistsException(playerToValidate.getEmail());
+                    }
+                    if (p.getSlug().equalsIgnoreCase(playerToValidate.getSlug())) {
+                        throw new SlugAlreadyExistsException(playerToValidate.getSlug());
+                    }
+                });
+    }
+
 }
