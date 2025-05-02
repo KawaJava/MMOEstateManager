@@ -25,6 +25,7 @@ public class AdminCountryService {
 
     private final AdminCountryRepository adminCountryRepository;
     private final AdminHistoricalSheriffsService adminHistoricalSheriffsService;
+    private final AdminCountryValidationService validationService;
 
     public Page<AdminCountry> getAdminCountries(Pageable pageable) {
         return adminCountryRepository.findAll(pageable);
@@ -39,10 +40,12 @@ public class AdminCountryService {
     }
 
     public AdminCountry createAdminCountry(AdminCountry adminCountry) {
+        validationService.validateUniqueConstraints(adminCountry);
         return adminCountryRepository.save(adminCountry);
     }
 
     public AdminCountry updateAdminCountryGeneralInfo(AdminCountry adminCountry) {
+        validationService.validateUniqueConstraints(adminCountry);
         return adminCountryRepository.save(adminCountry);
     }
 
