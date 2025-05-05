@@ -92,7 +92,7 @@ public class CountryService {
 
     private List<Long> getLeadersIds(List<Borough> countryBoroughs) {
         return countryBoroughs.stream()
-                .map(Borough::getActualLeaderId)
+                .map(borough -> borough.getActualLeader().getId())
                 .toList();
     }
 

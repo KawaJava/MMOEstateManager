@@ -15,7 +15,7 @@ public class BoroughMapper {
 
     public static List<Long> getPlayersIds(List<Borough> boroughs) {
         return boroughs.stream()
-                .map(Borough::getActualLeaderId)
+                .map(borough -> borough.getActualLeader().getId())
                 .distinct()
                 .toList();
     }

@@ -3,6 +3,7 @@ package io.github.kawajava.MMOEstateManager.common.service;
 import io.github.kawajava.MMOEstateManager.borough.controller.dto.GoldDto;
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
 import io.github.kawajava.MMOEstateManager.common.repository.BoroughRepository;
+import io.github.kawajava.MMOEstateManager.common.repository.PlayerRepository;
 import io.github.kawajava.MMOEstateManager.goldHistory.model.GoldHistory;
 import io.github.kawajava.MMOEstateManager.common.repository.GoldHistoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class BoroughService {
 
     private final BoroughRepository boroughRepository;
     private final GoldHistoryRepository goldHistoryRepository;
+    private final PlayerRepository playerRepository;
 
     public Page<Borough> getBoroughs(Pageable pageable) {
         return boroughRepository.findAll(pageable);
@@ -44,7 +46,7 @@ public class BoroughService {
                 .id(null)
                 .boroughId(borough.getId())
                 .gold(borough.getActualGold())
-                .goldAddedBy(borough.getGoldAddedBy())
+                .goldAddedBy(borough.getGoldAddedBy().getId())
                 .dateAdded(borough.getDateAdded())
                 .emailSend(borough.getEmailSend())
                 .build();
@@ -56,10 +58,10 @@ public class BoroughService {
                 .name(borough.getName())
                 .slug(borough.getSlug())
                 .countryId(borough.getCountryId())
-                .actualLeaderId(borough.getActualLeaderId())
+                .actualLeader(borough.getActualLeader())
                 .leaderStartDate(borough.getLeaderStartDate())
                 .actualGold(goldDto.getNewGold())
-                .goldAddedBy(goldDto.getGoldAddedBy())
+                .goldAddedBy(playerRepository.getById(goldDto.getGoldAddedBy()))
                 .dateAdded(LocalDateTime.now())
                 .emailSend(false)
                 .build();

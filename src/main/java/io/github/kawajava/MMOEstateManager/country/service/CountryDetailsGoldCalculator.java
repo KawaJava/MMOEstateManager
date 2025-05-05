@@ -32,7 +32,7 @@ class CountryDetailsGoldCalculator {
     Map<Clan, BigDecimal> getGoldByClan(List<Borough> countryBoroughs, Map<Long, PlayerInfo> playerMap) {
         return countryBoroughs.stream()
                 .collect(Collectors.groupingBy(
-                        borough -> playerMap.get(borough.getActualLeaderId()).getClan(),
+                        borough -> playerMap.get(borough.getActualLeader().getId()).getClan(),
                         Collectors.mapping(
                                 Borough::getActualGold,
                                 Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)
@@ -43,7 +43,7 @@ class CountryDetailsGoldCalculator {
     Map<String, BigDecimal> getGoldByPlayers(List<Borough> countryBoroughs, Map<Long, PlayerInfo> playerMap) {
         return countryBoroughs.stream()
                 .collect(Collectors.groupingBy(
-                        borough -> playerMap.get(borough.getActualLeaderId()).getName(),
+                        borough -> playerMap.get(borough.getActualLeader().getId()).getName(),
                         Collectors.mapping(
                                 Borough::getActualGold,
                                 Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)
@@ -55,7 +55,7 @@ class CountryDetailsGoldCalculator {
         Map<String, BigDecimal> playerPercentageMap = new HashMap<>();
 
         countryBoroughs.stream()
-                .collect(Collectors.groupingBy(Borough::getActualLeaderId, Collectors.mapping(Borough::getActualGold, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))))
+                .collect(Collectors.groupingBy(borough -> borough.getActualLeader().getId(), Collectors.mapping(Borough::getActualGold, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))))
                 .forEach((leaderId, totalGoldByPlayer) -> {
                     PlayerInfo playerInfo = playerMap.get(leaderId);
                     BigDecimal percentage = totalGoldByPlayer
@@ -70,7 +70,7 @@ class CountryDetailsGoldCalculator {
 
         countryBoroughs.stream()
                 .collect(Collectors.groupingBy(
-                        borough -> playerMap.get(borough.getActualLeaderId()).getClan(),
+                        borough -> playerMap.get(borough.getActualLeader().getId()).getClan(),
                         Collectors.mapping(Borough::getActualGold, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))
                 ))
                 .forEach((clan, totalGoldByClan) -> {

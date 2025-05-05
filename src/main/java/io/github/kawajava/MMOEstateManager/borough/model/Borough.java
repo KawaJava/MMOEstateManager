@@ -1,5 +1,6 @@
 package io.github.kawajava.MMOEstateManager.borough.model;
 
+import io.github.kawajava.MMOEstateManager.player.model.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,10 +22,14 @@ public class Borough {
     private String name;
     private String slug;
     private Long countryId;
-    private Long actualLeaderId;
+    @ManyToOne
+    @JoinColumn(name = "actualLeaderId")
+    private Player actualLeader;
     private LocalDateTime leaderStartDate;
     private BigDecimal actualGold;
-    private Long goldAddedBy;
+    @ManyToOne
+    @JoinColumn(name = "goldAddedBy")
+    private Player goldAddedBy;
     private LocalDateTime dateAdded;
     private Boolean emailSend;
 }
