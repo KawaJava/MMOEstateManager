@@ -1,9 +1,9 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.model.controller;
+package io.github.kawajava.MMOEstateManager.playerReviews.controller;
 
 
 import io.github.kawajava.MMOEstateManager.playerReviews.model.PlayerReview;
-import io.github.kawajava.MMOEstateManager.playerReviews.model.controller.dto.PlayerReviewDTO;
-import io.github.kawajava.MMOEstateManager.playerReviews.model.service.PlayerReviewService;
+import io.github.kawajava.MMOEstateManager.playerReviews.controller.dto.PlayerReviewDTO;
+import io.github.kawajava.MMOEstateManager.playerReviews.service.PlayerReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

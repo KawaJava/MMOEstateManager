@@ -1,8 +1,8 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.model.service;
+package io.github.kawajava.MMOEstateManager.playerReviews.service;
 
 import io.github.kawajava.MMOEstateManager.playerReviews.model.PlayerReview;
-import io.github.kawajava.MMOEstateManager.playerReviews.model.controller.dto.PlayerReviewDTO;
-import io.github.kawajava.MMOEstateManager.playerReviews.model.repository.PlayerReviewRepository;
+import io.github.kawajava.MMOEstateManager.playerReviews.controller.dto.PlayerReviewDTO;
+import io.github.kawajava.MMOEstateManager.playerReviews.repository.PlayerReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
