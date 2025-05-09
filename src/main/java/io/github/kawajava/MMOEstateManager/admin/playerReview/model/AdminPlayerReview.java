@@ -1,5 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.playerReview.model;
 
+import io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +17,9 @@ public class AdminPlayerReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long playerId;
+    @ManyToOne
+    @JoinColumn(name = "playerId")
+    private AdminPlayer player;
     private String authorName;
     private Byte note;
     private String content;
