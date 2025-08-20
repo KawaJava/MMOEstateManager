@@ -24,5 +24,7 @@ public class AdminPlayerReview {
     private Byte note;
     private String content;
     private LocalDateTime createdAt;
+    @Enumerated(EnumType.STRING)
+    private AiOpinion aiOpinion;
     private Boolean accepted;
 }
