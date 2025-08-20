@@ -12,4 +12,6 @@ public interface AdminPlayerReviewRepository extends JpaRepository<AdminPlayerRe
     @Modifying
     void acceptPlayerReview(Long id);
     List<AdminPlayerReview> findByAcceptedFalse();
+
+    List<AdminPlayerReview> findTop1000ByAiOpinionIsNullAndAcceptedFalse();
 }
