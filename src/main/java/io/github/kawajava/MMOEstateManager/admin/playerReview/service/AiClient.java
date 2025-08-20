@@ -32,7 +32,7 @@ public class AiClient {
 
     private Map<Long, AiOpinion> parseResponse(String response) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
+            var mapper = new ObjectMapper();
             List<OpinionResult> results = mapper.readValue(response,
                     new TypeReference<>() {});
             return results.stream()
