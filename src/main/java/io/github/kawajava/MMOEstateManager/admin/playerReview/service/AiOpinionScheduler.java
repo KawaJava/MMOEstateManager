@@ -10,7 +10,7 @@ public class AiOpinionScheduler {
 
     private final AiOpinionService aiOpinionService;
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "${cron.player.review.ai.opinion.expression}")
     public void scheduleAiClassification() {
         aiOpinionService.processOpinions();
     }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.kawajava.MMOEstateManager.admin.playerReview.model.AiOpinion;
 import io.github.kawajava.MMOEstateManager.admin.playerReview.model.OpinionDto;
 import io.github.kawajava.MMOEstateManager.common.AI.service.AIService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,39 +13,29 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class AiClient {
+@RequiredArgsConstructor
+public class OpinionClassifier {
 
     private final AIService aiService;
     private final PromptProvider promptProvider;
 
-    public AiClient(AIService aiService, PromptProvider promptProvider) {
-        this.aiService = aiService;
-        this.promptProvider = promptProvider;
-    }
-
-    public Map<Long, AiOpinion> classifyBatch(List<OpinionDto> batch) {
-        String filledPrompt = promptProvider.getOpinionClassifierPrompt(batch);
-
-        String response = aiService.chat(filledPrompt);
-
+    public Map<Long, AiOpinion> classifyOpinions(List<OpinionDto> opinions) {
+        String prompt = promptProvider.getOpinionClassifierPrompt(opinions);
+        String response = aiService.chat(prompt);
         return parseResponse(response);
     }
 
     private Map<Long, AiOpinion> parseResponse(String response) {
+        ObjectMapper mapper = new ObjectMapper();
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            List<OpinionResult> results = mapper.readValue(response,
-                    new TypeReference<>() {});
-            return results.stream()
-                    .collect(Collectors.toMap(
-                            OpinionResult::id,
-                            OpinionResult::opinion
-                    ));
+            List<Map<String, String>> parsed = mapper.readValue(response, new TypeReference<>() {});
+            return parsed.stream().collect(Collectors.toMap(
+                    m -> Long.valueOf(m.get("id")),
+                    m -> AiOpinion.valueOf(m.get("opinion").toUpperCase())
+            ));
         } catch (Exception e) {
             throw new RuntimeException("Error parsing AI response: " + response, e);
         }
     }
-
-    private record OpinionResult(Long id, AiOpinion opinion) {}
 }
 
