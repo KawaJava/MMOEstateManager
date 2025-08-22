@@ -1,6 +1,6 @@
 package io.github.kawajava.MMOEstateManager.admin.playerReview.service;
 
-import io.github.kawajava.MMOEstateManager.admin.playerReview.model.OpinionDto;
+import io.github.kawajava.MMOEstateManager.admin.playerReview.model.dto.OpinionDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class PromptProvider {
     }
 
     public String getOpinionClassifierPrompt(List<OpinionDto> opinions) {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         for (OpinionDto dto : opinions) {
             sb.append("{id: ").append(dto.id())
                     .append(", text: \"").append(dto.content().replace("\"", "'")).append("\"}\n");

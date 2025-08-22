@@ -2,7 +2,7 @@ package io.github.kawajava.MMOEstateManager.admin.playerReview.service;
 
 import io.github.kawajava.MMOEstateManager.admin.playerReview.model.AdminPlayerReview;
 import io.github.kawajava.MMOEstateManager.admin.playerReview.model.AiOpinion;
-import io.github.kawajava.MMOEstateManager.admin.playerReview.model.OpinionDto;
+import io.github.kawajava.MMOEstateManager.admin.playerReview.model.dto.OpinionDto;
 import io.github.kawajava.MMOEstateManager.admin.playerReview.repository.AdminPlayerReviewRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

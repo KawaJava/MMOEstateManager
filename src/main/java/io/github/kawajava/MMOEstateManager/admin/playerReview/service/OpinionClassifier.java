@@ -3,7 +3,7 @@ package io.github.kawajava.MMOEstateManager.admin.playerReview.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.kawajava.MMOEstateManager.admin.playerReview.model.AiOpinion;
-import io.github.kawajava.MMOEstateManager.admin.playerReview.model.OpinionDto;
+import io.github.kawajava.MMOEstateManager.admin.playerReview.model.dto.OpinionDto;
 import io.github.kawajava.MMOEstateManager.common.AI.service.AIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class OpinionClassifier {
     }
 
     private Map<Long, AiOpinion> parseResponse(String response) {
-        ObjectMapper mapper = new ObjectMapper();
+        var mapper = new ObjectMapper();
         try {
             List<Map<String, String>> parsed = mapper.readValue(response, new TypeReference<>() {});
             return parsed.stream().collect(Collectors.toMap(
