@@ -1,6 +1,5 @@
 package io.github.kawajava.MMOEstateManager.historicalSheriffs.model;
 
-import io.github.kawajava.MMOEstateManager.country.model.Country;
 import io.github.kawajava.MMOEstateManager.player.model.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "historical_sheriff")
 @Getter
 @Builder
 @NoArgsConstructor

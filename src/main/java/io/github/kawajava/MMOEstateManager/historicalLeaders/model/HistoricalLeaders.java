@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "historical_leader")
 @Getter
 @Builder
 @NoArgsConstructor
