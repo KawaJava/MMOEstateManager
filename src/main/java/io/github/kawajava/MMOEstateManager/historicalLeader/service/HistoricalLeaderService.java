@@ -1,9 +1,9 @@
-package io.github.kawajava.MMOEstateManager.historicalLeaders.service;
+package io.github.kawajava.MMOEstateManager.historicalLeader.service;
 
 import io.github.kawajava.MMOEstateManager.borough.model.Borough;
 import io.github.kawajava.MMOEstateManager.common.service.BoroughService;
-import io.github.kawajava.MMOEstateManager.historicalLeaders.model.HistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.historicalLeaders.repository.HistoricalLeadersRepository;
+import io.github.kawajava.MMOEstateManager.historicalLeader.model.HistoricalLeader;
+import io.github.kawajava.MMOEstateManager.historicalLeader.repository.HistoricalLeaderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,14 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class HistoricalLeadersService {
+public class HistoricalLeaderService {
 
-    private final HistoricalLeadersRepository historicalLeadersRepository;
+    private final HistoricalLeaderRepository historicalLeaderRepository;
     private final BoroughService boroughService;
 
-    public List<HistoricalLeaders> getHHistoricalLeadersBySlug(String slug) {
+    public List<HistoricalLeader> getHHistoricalLeadersBySlug(String slug) {
         Borough borough = boroughService.getBoroughBySlug(slug);
-        return historicalLeadersRepository.findAll().stream()
+        return historicalLeaderRepository.findAll().stream()
                 .filter(historicalLeader -> historicalLeader.getBoroughId().equals(borough.getId()))
                 .toList();
 

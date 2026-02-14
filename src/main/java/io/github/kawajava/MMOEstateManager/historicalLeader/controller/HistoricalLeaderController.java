@@ -1,7 +1,7 @@
-package io.github.kawajava.MMOEstateManager.historicalLeaders.controller;
+package io.github.kawajava.MMOEstateManager.historicalLeader.controller;
 
-import io.github.kawajava.MMOEstateManager.historicalLeaders.model.HistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.historicalLeaders.service.HistoricalLeadersService;
+import io.github.kawajava.MMOEstateManager.historicalLeader.model.HistoricalLeader;
+import io.github.kawajava.MMOEstateManager.historicalLeader.service.HistoricalLeaderService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -17,13 +17,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/historical-leaders")
 @Validated
-public class HistoricalLeadersController {
+public class HistoricalLeaderController {
 
-    private final HistoricalLeadersService historicalLeadersService;
+    private final HistoricalLeaderService historicalLeaderService;
 
     @GetMapping("/{slug}")
-    public List<HistoricalLeaders> getHistoricalLeadersBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
+    public List<HistoricalLeader> getHistoricalLeadersBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                                                 @Length(max = 255) String slug) {
-        return historicalLeadersService.getHHistoricalLeadersBySlug(slug);
+        return historicalLeaderService.getHHistoricalLeadersBySlug(slug);
     }
 }

@@ -17,7 +17,7 @@ import static io.github.kawajava.MMOEstateManager.admin.common.service.Historica
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-class HistoricalLeadersFilterServiceTest {
+class HistoricalLeaderFilterServiceTest {
 
     @InjectMocks
     HistoricalLeadersFilterService service;
