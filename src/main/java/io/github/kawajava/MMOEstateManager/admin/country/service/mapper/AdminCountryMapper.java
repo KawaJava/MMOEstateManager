@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.country.service.mapper;
 
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff;
 
 import java.time.LocalDateTime;
 
@@ -18,9 +18,9 @@ public class AdminCountryMapper {
                 .build();
     }
 
-    public static AdminHistoricalSheriffs mapAdminHistoricalSheriffs(
+    public static AdminHistoricalSheriff mapAdminHistoricalSheriffs(
             Long countryId, Long actualSheriffId, LocalDateTime oldSheriffStartDate, LocalDateTime now) {
-        return AdminHistoricalSheriffs.builder()
+        return AdminHistoricalSheriff.builder()
                 .id(null)
                 .countryId(countryId)
                 .playerId(actualSheriffId)

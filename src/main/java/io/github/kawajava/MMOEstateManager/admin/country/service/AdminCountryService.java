@@ -1,12 +1,10 @@
 package io.github.kawajava.MMOEstateManager.admin.country.service;
 
-import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBoroughToAutocomplete;
-import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
 import io.github.kawajava.MMOEstateManager.admin.country.controller.dto.AdminCountryToAutocomplete;
 import io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry;
 import io.github.kawajava.MMOEstateManager.admin.country.repository.AdminCountryRepository;
-import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffsService;
+import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalSheriffService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,7 +22,7 @@ import static io.github.kawajava.MMOEstateManager.admin.country.service.mapper.A
 public class AdminCountryService {
 
     private final AdminCountryRepository adminCountryRepository;
-    private final AdminHistoricalSheriffsService adminHistoricalSheriffsService;
+    private final AdminHistoricalSheriffService adminHistoricalSheriffService;
     private final AdminCountryValidationService validationService;
 
     public Page<AdminCountry> getAdminCountries(Pageable pageable) {
@@ -57,7 +55,7 @@ public class AdminCountryService {
         var now = LocalDateTime.now();
         var adminHistoricalSheriff = mapAdminHistoricalSheriffs(countryId, actualSheriffId, oldSheriffStartDate, now);
 
-        adminHistoricalSheriffsService.createAdminHistoricalSheriff(adminHistoricalSheriff);
+        adminHistoricalSheriffService.createAdminHistoricalSheriff(adminHistoricalSheriff);
         return adminCountryRepository.save(mapAdminCountry(countryId, sheriffId, adminCountry, now));
     }
 

@@ -1,17 +1,17 @@
 package io.github.kawajava.MMOEstateManager.admin.common.service;
 
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.model.AdminHistoricalSheriffs;
-import io.github.kawajava.MMOEstateManager.admin.historicalSheriffs.service.dto.HistoricalSheriffsFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff;
+import io.github.kawajava.MMOEstateManager.admin.historicalSheriff.service.dto.HistoricalSheriffFilteredDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class HistoricalSheriffsFilterService {
+public class HistoricalSheriffFilterService {
 
-    public static List<AdminHistoricalSheriffs> filterHistoricalSheriffs(
-            HistoricalSheriffsFilteredDto filteredDto, List<AdminHistoricalSheriffs> all,
+    public static List<AdminHistoricalSheriff> filterHistoricalSheriffs(
+            HistoricalSheriffFilteredDto filteredDto, List<AdminHistoricalSheriff> all,
             LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return all.stream()
                 .filter(data -> filteredDto.countryId() == null || data.getCountryId().equals(filteredDto.countryId()))
