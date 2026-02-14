@@ -1,7 +1,7 @@
-package io.github.kawajava.MMOEstateManager.historicalSheriffs.controller;
+package io.github.kawajava.MMOEstateManager.historicalSheriff.controller;
 
-import io.github.kawajava.MMOEstateManager.historicalSheriffs.model.HistoricalSheriffs;
-import io.github.kawajava.MMOEstateManager.historicalSheriffs.service.HistoricalSheriffsService;
+import io.github.kawajava.MMOEstateManager.historicalSheriff.model.HistoricalSheriff;
+import io.github.kawajava.MMOEstateManager.historicalSheriff.service.HistoricalSheriffService;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -17,13 +17,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/historical-sheriffs")
 @Validated
-public class HistoricalSheriffsController {
+public class HistoricalSheriffController {
 
-    private final HistoricalSheriffsService historicalSheriffsService;
+    private final HistoricalSheriffService historicalSheriffService;
 
     @GetMapping("/{slug}")
-    public List<HistoricalSheriffs> getHistoricalSheriffsBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
+    public List<HistoricalSheriff> getHistoricalSheriffsBySlug(@PathVariable @Pattern(regexp = "[a-z0-9\\-]+")
                                     @Length(max = 255) String slug) {
-        return historicalSheriffsService.getHistoricalSheriffsBySlug(slug);
+        return historicalSheriffService.getHistoricalSheriffsBySlug(slug);
     }
 }

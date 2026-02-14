@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.historicalSheriffs.model;
+package io.github.kawajava.MMOEstateManager.historicalSheriff.model;
 
 import io.github.kawajava.MMOEstateManager.player.model.Player;
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HistoricalSheriffs {
+public class HistoricalSheriff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
