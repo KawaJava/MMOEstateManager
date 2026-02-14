@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.borough.service.mapper;
 
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
+import io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader;
 
 import java.time.LocalDateTime;
 
@@ -22,9 +22,9 @@ public class AdminBoroughMapper {
                 .build();
     }
 
-    public static AdminHistoricalLeaders mapAdminHistoricalLeaders(
+    public static AdminHistoricalLeader mapAdminHistoricalLeaders(
             Long boroughId, Long actualLeaderId, LocalDateTime oldSheriffStartDate, LocalDateTime now) {
-        return AdminHistoricalLeaders.builder()
+        return AdminHistoricalLeader.builder()
                 .id(null)
                 .boroughId(boroughId)
                 .playerId(actualLeaderId)

@@ -59,7 +59,7 @@
 		io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough
 		io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry
 		io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory
-		io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
+		io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
 		io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff
 		io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer]
 	Mapping files names []
@@ -421,44 +421,44 @@
 2024-09-01T13:35:00.683+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: gold_history.gold_added_by
 2024-09-01T13:35:00.683+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property goldAddedBy
 2024-09-01T13:35:00.684+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.r.c.i.ClassLoaderServiceImpl       : HHH000194: Package not found or no package-info.java: io.github.kawajava.MMOEstateManager.admin.goldHistory.model
-2024-09-01T13:35:00.686+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Binding entity from annotated class: io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
+2024-09-01T13:35:00.686+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Binding entity from annotated class: io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
 2024-09-01T13:35:00.687+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Import with entity name AdminHistoricalLeaders
-2024-09-01T13:35:00.687+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Bind entity io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders on table historical_leaders
+2024-09-01T13:35:00.687+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Bind entity io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader on table historical_leaders
 2024-09-01T13:35:00.694+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedDiscriminatorColumn(column='DTYPE')
 2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedColumn()
-2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders] is safe
-2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
+2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader] is safe
+2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
 2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : MetadataSourceProcessor property id with lazy=false
-2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders:id]
+2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader:id]
 2024-09-01T13:35:00.695+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.model.internal.BasicValueBinder    : building BasicValue for id
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: historical_leaders.id
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property id
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.BinderHelper     : #makeIdGenerator(BasicValue([Column(id)]), id, identity, , ...)
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedColumn()
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : MetadataSourceProcessor property boroughId with lazy=false
-2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders:boroughId]
+2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader:boroughId]
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.model.internal.BasicValueBinder    : building BasicValue for boroughId
 2024-09-01T13:35:00.696+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: historical_leaders.borough_id
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property boroughId
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedColumn()
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : MetadataSourceProcessor property endDate with lazy=false
-2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders:endDate]
+2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader:endDate]
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.model.internal.BasicValueBinder    : building BasicValue for endDate
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: historical_leaders.end_date
 2024-09-01T13:35:00.697+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property endDate
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedColumn()
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : MetadataSourceProcessor property playerId with lazy=false
-2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders:playerId]
+2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader:playerId]
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.model.internal.BasicValueBinder    : building BasicValue for playerId
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: historical_leaders.player_id
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property playerId
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.AnnotatedColumn  : Binding column: AnnotatedColumn()
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : MetadataSourceProcessor property startDate with lazy=false
-2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders:startDate]
+2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.m.internal.AbstractPropertyHolder  : Attempting to locate auto-apply AttributeConverter for property [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader:startDate]
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.model.internal.BasicValueBinder    : building BasicValue for startDate
 2024-09-01T13:35:00.698+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.mapping.BasicValue         : Skipping column re-registration: historical_leaders.start_date
 2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.PropertyBinder   : Building property startDate
-2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.r.c.i.ClassLoaderServiceImpl       : HHH000194: Package not found or no package-info.java: io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model
+2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.r.c.i.ClassLoaderServiceImpl       : HHH000194: Package not found or no package-info.java: io.github.kawajava.MMOEstateManager.admin.historicalLeader.model
 2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Binding entity from annotated class: io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff
 2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Import with entity name AdminHistoricalSheriffs
 2024-09-01T13:35:00.699+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.model.internal.EntityBinder     : Bind entity io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff on table historical_sheriffs
@@ -616,8 +616,8 @@
 2024-09-01T13:35:00.949+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer
 2024-09-01T13:35:00.953+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff] is safe
 2024-09-01T13:35:00.953+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff
-2024-09-01T13:35:00.955+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders] is safe
-2024-09-01T13:35:00.955+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
+2024-09-01T13:35:00.955+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader] is safe
+2024-09-01T13:35:00.955+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
 2024-09-01T13:35:00.959+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough] is safe
 2024-09-01T13:35:00.960+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough
 2024-09-01T13:35:00.963+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory] is safe
@@ -966,9 +966,9 @@
 2024-09-01T13:35:01.381+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff] is safe
 2024-09-01T13:35:01.381+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff
 2024-09-01T13:35:01.394+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.i.bytebuddy.BytecodeProviderImpl   : HHH000513: Unable to create the ReflectionOptimizer for [io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff]: private accessor [countryId]
-2024-09-01T13:35:01.395+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders] is safe
-2024-09-01T13:35:01.395+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
-2024-09-01T13:35:01.417+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.i.bytebuddy.BytecodeProviderImpl   : HHH000513: Unable to create the ReflectionOptimizer for [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders]: private accessor [boroughId]
+2024-09-01T13:35:01.395+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader] is safe
+2024-09-01T13:35:01.395+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
+2024-09-01T13:35:01.417+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.i.bytebuddy.BytecodeProviderImpl   : HHH000513: Unable to create the ReflectionOptimizer for [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader]: private accessor [boroughId]
 2024-09-01T13:35:01.419+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : Not known whether passed class name [io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough] is safe
 2024-09-01T13:35:01.419+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.boot.internal.ClassLoaderAccessImpl  : No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough
 2024-09-01T13:35:01.442+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.b.i.bytebuddy.BytecodeProviderImpl   : HHH000513: Unable to create the ReflectionOptimizer for [io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough]: private accessor [actualGold]
@@ -979,7 +979,7 @@
 2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.country.model.AdminCountry) `staticFetchableList` generator
 2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.player.model.AdminPlayer) `staticFetchableList` generator
 2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.historicalSheriff.model.AdminHistoricalSheriff) `staticFetchableList` generator
-2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders) `staticFetchableList` generator
+2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader) `staticFetchableList` generator
 2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough) `staticFetchableList` generator
 2024-09-01T13:35:01.482+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.hibernate.orm.model.mapping.creation   : Starting PostInitCallbackEntry : Entity(io.github.kawajava.MMOEstateManager.admin.goldHistory.model.AdminGoldHistory) `staticFetchableList` generator
 2024-09-01T13:35:01.543+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.sql.ast.create         : Created new SQL alias : ac1_0
@@ -1055,24 +1055,24 @@
 2024-09-01T13:35:01.564+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     :  Update (0): update historical_sheriffs set country_id=?,end_date=?,player_id=?,start_date=? where id=?
 2024-09-01T13:35:01.564+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     :  Delete (0): delete from historical_sheriffs where id=?
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.sql.ast.create         : Created new SQL alias : ahl1_0
-2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.sql.ast.create         : Registration of TableGroup [StandardTableGroup(io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders)] with identifierForTableGroup [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders] for NavigablePath [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders] 
+2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.sql.ast.create         : Registration of TableGroup [StandardTableGroup(io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader)] with identifierForTableGroup [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader] for NavigablePath [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader]
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.results.graph.AST      : DomainResult Graph:
- \-EntityResultImpl [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders]
- |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders.boroughId]
- |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders.endDate]
- |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders.playerId]
- |  \-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders.startDate]
+ \-EntityResultImpl [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader]
+ |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader.boroughId]
+ |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader.endDate]
+ |  +-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader.playerId]
+ |  \-BasicFetch [io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader.startDate]
 
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] org.hibernate.orm.sql.ast.tree           : SQL AST Tree:
     SelectStatement {
       FromClause {
-        StandardTableGroup (ahl1 : io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders) {
+        StandardTableGroup (ahl1 : io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader) {
           primaryTableReference : historical_leaders as ahl1_0
         }
       }
     }
 
-2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     : Static SQL for entity: io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders
+2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     : Static SQL for entity: io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     :  Version select: select id from historical_leaders where id=?
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     :  Insert (0): insert into historical_leaders (borough_id,end_date,player_id,start_date) values (?,?,?,?)
 2024-09-01T13:35:01.565+02:00 DEBUG 9468 --- [MMOEstateManager] [main] o.h.p.entity.AbstractEntityPersister     :  Update (0): update historical_leaders set borough_id=?,end_date=?,player_id=?,start_date=? where id=?

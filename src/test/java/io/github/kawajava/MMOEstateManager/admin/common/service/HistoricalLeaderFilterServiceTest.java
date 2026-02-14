@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.common.service;
 
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader;
+import io.github.kawajava.MMOEstateManager.admin.historicalLeader.service.dto.HistoricalLeaderFilteredDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ class HistoricalLeaderFilterServiceTest {
     @InjectMocks
     HistoricalLeadersFilterService service;
 
-    private List<AdminHistoricalLeaders> allLeaders;
+    private List<AdminHistoricalLeader> allLeaders;
 
     @BeforeEach
     public void setUp() {
@@ -31,7 +31,7 @@ class HistoricalLeaderFilterServiceTest {
 
     @Test
     public void shouldFilterByBoroughIdCorrectly() {
-        var filter = new HistoricalLeadersFilteredDto(1L, null, null, null);
+        var filter = new HistoricalLeaderFilteredDto(1L, null, null, null);
         var result = filterHistoricalLeaders(filter, allLeaders, null, null);
         assertThat(result).hasSize(2);
         assertThat(result).extracting("id").containsExactly(1L, 3L);
@@ -40,7 +40,7 @@ class HistoricalLeaderFilterServiceTest {
 
     @Test
     public void shouldFilterByPlayerIdCorrectly() {
-        var filter = new HistoricalLeadersFilteredDto(null, 2L, null, null);
+        var filter = new HistoricalLeaderFilteredDto(null, 2L, null, null);
         var result = filterHistoricalLeaders(filter, allLeaders, null, null);
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getPlayerId()).isEqualTo(2L);
@@ -50,7 +50,7 @@ class HistoricalLeaderFilterServiceTest {
     @Test
     public void shouldFilterByStartDateCorrectly() {
         var startDateTime = LocalDateTime.of(2022, 1, 5, 0, 0);
-        var filter = new HistoricalLeadersFilteredDto(null, null, LocalDate.of(2022, 1, 5), null);
+        var filter = new HistoricalLeaderFilteredDto(null, null, LocalDate.of(2022, 1, 5), null);
         var result = filterHistoricalLeaders(filter, allLeaders, startDateTime, null);
         assertThat(result).hasSize(2);
         assertThat(result).extracting("id").containsExactly(2L, 3L);
@@ -63,7 +63,7 @@ class HistoricalLeaderFilterServiceTest {
     @Test
     public void shouldFilterByEndDateCorrectly() {
         var endDateTime = LocalDateTime.of(2022, 1, 15, 0, 0);
-        var filter = new HistoricalLeadersFilteredDto(null, null, null, LocalDate.of(2022, 1, 15));
+        var filter = new HistoricalLeaderFilteredDto(null, null, null, LocalDate.of(2022, 1, 15));
         var result = filterHistoricalLeaders(filter, allLeaders, null, endDateTime);
         assertThat(result).hasSize(2);
         assertThat(result).extracting("id").containsExactly(1L, 2L);
@@ -77,7 +77,7 @@ class HistoricalLeaderFilterServiceTest {
     public void shouldFilterByAllCriteriaCorrectly() {
         var startDateTime = LocalDateTime.of(2022, 1, 1, 0, 0);
         var endDateTime = LocalDateTime.of(2022, 1, 25, 0, 0);
-        var filter = new HistoricalLeadersFilteredDto(1L, null, LocalDate.of(2022, 1, 3), LocalDate.of(2022, 1, 18));
+        var filter = new HistoricalLeaderFilteredDto(1L, null, LocalDate.of(2022, 1, 3), LocalDate.of(2022, 1, 18));
         var result = filterHistoricalLeaders(filter, allLeaders, startDateTime, endDateTime);
         assertThat(result).hasSize(2);
         assertThat(result).extracting("id").containsExactly(1L, 3L);
@@ -90,21 +90,21 @@ class HistoricalLeaderFilterServiceTest {
 
     private void prepareTestData() {
         allLeaders = Arrays.asList(
-                AdminHistoricalLeaders.builder()
+                AdminHistoricalLeader.builder()
                         .id(1L)
                         .boroughId(1L)
                         .playerId(1L)
                         .startDate(LocalDateTime.of(2022, 1, 1, 0, 0))
                         .endDate(LocalDateTime.of(2022, 1, 10, 0, 0))
                         .build(),
-                AdminHistoricalLeaders.builder()
+                AdminHistoricalLeader.builder()
                         .id(2L)
                         .boroughId(2L)
                         .playerId(2L)
                         .startDate(LocalDateTime.of(2022, 1, 5, 0, 0))
                         .endDate(LocalDateTime.of(2022, 1, 15, 0, 0))
                         .build(),
-                AdminHistoricalLeaders.builder()
+                AdminHistoricalLeader.builder()
                         .id(3L)
                         .boroughId(1L)
                         .playerId(3L)

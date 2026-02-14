@@ -1,7 +1,7 @@
 package io.github.kawajava.MMOEstateManager.admin.common.service;
 
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model.AdminHistoricalLeaders;
-import io.github.kawajava.MMOEstateManager.admin.historicalLeaders.service.dto.HistoricalLeadersFilteredDto;
+import io.github.kawajava.MMOEstateManager.admin.historicalLeader.model.AdminHistoricalLeader;
+import io.github.kawajava.MMOEstateManager.admin.historicalLeader.service.dto.HistoricalLeaderFilteredDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -9,8 +9,8 @@ import java.util.List;
 
 @Service
 public class HistoricalLeadersFilterService {
-    public static List<AdminHistoricalLeaders> filterHistoricalLeaders(
-            HistoricalLeadersFilteredDto filteredDto, List<AdminHistoricalLeaders> all,
+    public static List<AdminHistoricalLeader> filterHistoricalLeaders(
+            HistoricalLeaderFilteredDto filteredDto, List<AdminHistoricalLeader> all,
             LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return all.stream()
                 .filter(data -> filteredDto.boroughId() == null || data.getBoroughId().equals(filteredDto.boroughId()))

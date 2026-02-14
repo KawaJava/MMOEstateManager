@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.admin.historicalLeaders.model;
+package io.github.kawajava.MMOEstateManager.admin.historicalLeader.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminHistoricalLeaders {
+public class AdminHistoricalLeader {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

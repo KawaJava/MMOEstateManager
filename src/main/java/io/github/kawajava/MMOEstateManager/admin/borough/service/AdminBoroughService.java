@@ -4,7 +4,7 @@ import io.github.kawajava.MMOEstateManager.admin.borough.controller.dto.AdminBor
 import io.github.kawajava.MMOEstateManager.admin.borough.model.AdminBorough;
 import io.github.kawajava.MMOEstateManager.admin.borough.repository.AdminBoroughRepository;
 import io.github.kawajava.MMOEstateManager.admin.common.exception.ResourceNotFoundException;
-import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalLeadersService;
+import io.github.kawajava.MMOEstateManager.admin.common.service.AdminHistoricalLeaderService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,7 +22,7 @@ import static io.github.kawajava.MMOEstateManager.admin.borough.service.mapper.A
 public class AdminBoroughService {
 
     private final AdminBoroughRepository adminBoroughRepository;
-    private final AdminHistoricalLeadersService adminHistoricalLeadersService;
+    private final AdminHistoricalLeaderService adminHistoricalLeaderService;
     private final AdminBoroughValidationService validationService;
 
     public Page<AdminBorough> getAdminBoroughs(Pageable pageable) {
@@ -55,7 +55,7 @@ public class AdminBoroughService {
         var now = LocalDateTime.now();
         var adminHistoricalLeader = mapAdminHistoricalLeaders(boroughId, actualLeaderId, oldLeaderStartDate, now);
 
-        adminHistoricalLeadersService.createAdminHistoricalLeader(adminHistoricalLeader);
+        adminHistoricalLeaderService.createAdminHistoricalLeader(adminHistoricalLeader);
         return adminBoroughRepository.save(mapAdminBorough(boroughId, leaderId, adminBorough, now));
     }
 
