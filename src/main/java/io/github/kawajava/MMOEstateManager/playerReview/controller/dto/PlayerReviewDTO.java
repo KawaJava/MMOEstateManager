@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.controller.dto;
+package io.github.kawajava.MMOEstateManager.playerReview.controller.dto;
 
 import jakarta.validation.constraints.*;
 

@@ -1,14 +1,13 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.service;
+package io.github.kawajava.MMOEstateManager.playerReview.service;
 
-import io.github.kawajava.MMOEstateManager.playerReviews.model.PlayerReview;
-import io.github.kawajava.MMOEstateManager.playerReviews.controller.dto.PlayerReviewDTO;
-import io.github.kawajava.MMOEstateManager.playerReviews.repository.PlayerReviewRepository;
+import io.github.kawajava.MMOEstateManager.playerReview.model.PlayerReview;
+import io.github.kawajava.MMOEstateManager.playerReview.controller.dto.PlayerReviewDTO;
+import io.github.kawajava.MMOEstateManager.playerReview.repository.PlayerReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,7 +24,7 @@ public class PlayerReviewService {
     }
 
     public List<PlayerReview> getAcceptedReviews(Long playerId, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+        Pageable pageable = PageRequest.of(page, size);
         return playerReviewRepository
                 .findByPlayerIdAndAcceptedTrueOrderByCreatedAtDesc(playerId, pageable)
                 .getContent();

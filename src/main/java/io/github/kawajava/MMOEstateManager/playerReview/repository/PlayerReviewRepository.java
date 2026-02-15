@@ -1,6 +1,6 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.repository;
+package io.github.kawajava.MMOEstateManager.playerReview.repository;
 
-import io.github.kawajava.MMOEstateManager.playerReviews.model.PlayerReview;
+import io.github.kawajava.MMOEstateManager.playerReview.model.PlayerReview;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

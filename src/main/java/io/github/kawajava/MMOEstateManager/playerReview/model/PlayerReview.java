@@ -1,4 +1,4 @@
-package io.github.kawajava.MMOEstateManager.playerReviews.model;
+package io.github.kawajava.MMOEstateManager.playerReview.model;
 
 import jakarta.persistence.*;
 import lombok.*;
